@@ -12,7 +12,7 @@ Benefits of using HPC CLI include:
 3. Supports Message Passing Interface (MPI) Deployment includes a complete set of software packages for running parallel processing with RDMA, including Mellanox OFED with Open MPI, Intel MPI, and Platform MPI.
 4. Customizable You can execute your own terraform scripts or add to the existing scripts provided with the tool to install your own applications.
 
-## Prerequisites
+## Required Artifacts
 
 ### Policies
 
@@ -54,7 +54,7 @@ ocihpc version
 ocihpc.exe version 
 ```
 
-### Creating a ssh keypair
+### Creating an ssh keypair
 
 #### Creating an SSH Key Pair on the Command Line
 Please refer to [this link](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Tasks/creatingkeys.htm) if you are using windows.
@@ -72,13 +72,11 @@ cd Users/enjli/.ssh
 mkdir Users/enjli/.ssh
 ```
 
-3. If you don't see any id_rsa key pairs in the folder, enter 
+3. If you don't see any id_rsa key pairs in the folder, enter the following command and provide a name and passphrase when prompted. The keys will be created with the default values: RSA keys of 2048 bits.
+
 ```sh 
 ssh-keygen
 ``` 
-and provide a name and passphrase when prompted.
-
-2. The keys will be created with the default values: RSA keys of 2048 bits.
 
 
 

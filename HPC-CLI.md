@@ -136,3 +136,4 @@ Deleting ClusterNetwork-ocihpc-test-7355 [0min 35sec]
 
 Succesfully deleted ClusterNetwork-ocihpc-test-7355
 ```
+.

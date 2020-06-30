@@ -45,5 +45,5 @@ Once you've created the Stack it will redirect you to a page where you can view 
 
 ![stack job](stack_detail_provisioning.png)
 
-To navigate to this page where you can view all your Stacks in your current compartment click on the Hamburger Menu on the top left and under **Solutions and Platform** hover over **Resource Manager** > **Stacks**.
+To navigate to this page where you can view all your Stacks in your current compartment click on the Hamburger Menu (≡) on the top left and under **Solutions and Platform** hover over **Resource Manager** > **Stacks**.
 ![nav resource manager](nav_resource_manager.png)

@@ -141,9 +141,9 @@ $ ocihpc init --stack ClusterNetwork
 
 Downloading stack: ClusterNetwork
 
-ClusterNetwork downloaded to /Users/opastirm/ocihpc-test/
+ClusterNetwork downloaded to /Users/enjli/ocihpc-test/
 
-IMPORTANT: Edit the contents of the /Users/opastirm/ocihpc-test/config.json file before running ocihpc deploy command
+IMPORTANT: Edit the contents of the /Users/enjli/ocihpc-test/config.json file before running ocihpc deploy command
 ```
 
 ### 4 - Deploy
@@ -156,10 +156,11 @@ Before deploying, you need to change the values in `config.json` file. The varia
     "bastion_ad": "kWVD:PHX-AD-2",
     "bastion_shape": "VM.Standard2.1",
     "node_count": "2",
-    "ssh_key": "ssh-rsa AAAAB3NzaC1yc2EAAAA......W6 opastirm@opastirm-mac"
+    "ssh_key": "ssh-rsa AAAAB3NzaC1yc2EAAAA......W6 enjli@enjli-mac"
   }
 }
 ```
+
 
 After you change the values in `config.json`, you can deploy the stack with `ocihpc deploy <arguments>`. This command will create a Stack on Oracle Cloud Resource Manager and deploy the stack using it.
 

@@ -20,11 +20,11 @@ The OCI user account you use in `ocihpc` should have the necessary policies conf
 
 ### Installing ocihpc
 
-#### Installing ocihpc on macOS/Linux
+#### Installing ocihpc on Linux
 
 1. Download the latest release with the following command and extract it:
 ```sh
-curl -LO https://github.com/oracle-quickstart/oci-ocihpc/releases/download/v1.0.0/ocihpc_v1.0.0_darwin_x86_64.tar.gz
+curl -LO https://github.com/oracle-quickstart/oci-ocihpc/releases/download/v1.0.2/ocihpc_v1.0.2_linux_x86_64.tar.gz
 ```
 
 2. Make the ocihpc binary executable.
@@ -42,10 +42,31 @@ sudo mv ./ocihpc /usr/local/bin/ocihpc
 ocihpc version 
 ```
 
+#### Installing ocihpc on macOS
+
+1. Download the latest release with the following command and extract it:
+```sh
+curl -LO https://github.com/oracle-quickstart/oci-ocihpc/releases/download/v1.0.2/ocihpc_v1.0.2_darwin_x86_64.tar.gz
+```
+
+2. Make the ocihpc binary executable.
+```sh
+chmod +x ./ocihpc 
+```
+
+3. Move the ocihpc binary to your PATH.
+```sh
+sudo mv ./ocihpc /usr/local/bin/ocihpc 
+```
+
+4. Test that it works.
+```sh
+ocihpc version 
+`
+
 #### Installing ocihpc on Windows
 
-
-1. Download the latest release from [this link](https://github.com/oracle-quickstart/oci-ocihpc/releases/download/v1.0.0/ocihpc_v1.0.0_windows_x86_64.zip) and extract it.
+1. Download the latest release from [this link](https://github.com/oracle-quickstart/oci-ocihpc/releases/download/v1.0.2/ocihpc_v1.0.2_windows_x86_64.zip) and extract it.
 
 2. Add the ocihpc binary to your PATH.
 
@@ -53,6 +74,7 @@ ocihpc version
 ```sh
 ocihpc.exe version 
 ```
+
 
 ### Creating an ssh keypair
 
@@ -77,8 +99,6 @@ mkdir Users/enjli/.ssh
 ```sh 
 ssh-keygen
 ``` 
-
-
 
 ### Generate an API Signing Key
 Your API requests will be signed with your private key, and Oracle will use the public key to verify the authenticity of the request.

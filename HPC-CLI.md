@@ -62,7 +62,7 @@ sudo mv ./ocihpc /usr/local/bin/ocihpc
 4. Test that it works.
 ```sh
 ocihpc version 
-`
+```
 
 #### Installing ocihpc on Windows
 

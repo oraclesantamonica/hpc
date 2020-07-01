@@ -130,7 +130,7 @@ This step describes the required configuration for the CLI and includes optional
 
 Before using the CLI, you have to create a config file that contains the required credentials for working with your Oracle Cloud Infrastructure account. You can create this file using a setup dialog or manually, using a text editor.
 
-An example `config.json` for Cluster Network would look like this:
+An example config file would look like this:
 
 ![](./oci_config.png " ")
 

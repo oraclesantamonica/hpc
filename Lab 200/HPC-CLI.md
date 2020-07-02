@@ -128,11 +128,23 @@ Now that you have a private / public key combo , you must add it to OCI Console 
 ### 1 - Configure
 This step describes the required configuration for the CLI and includes optional configurations that enable you to extend CLI functionality.
 
-Before using the CLI, you have to create a config file that contains the required credentials for working with your Oracle Cloud Infrastructure account. You can create this file using a setup dialog or manually, using a text editor and store it in your .oci folder.
+Before using the CLI, you have to create a config file that contains the required credentials for working with your Oracle Cloud Infrastructure account. You can create this file using a setup dialog or manually, using a text editor.
 
-An example config file would look like this:
+Run `ocihpc configure` to check if you have a valid configuration to access OCI. The tool will walk you through creating a configuration.
+
+An example `config.json` for Cluster Network would look like this:
 
 ![](./oci_config.png " ")
+
+In order to create your config file, you will need:
+- Your user OCID (found in profile section at the top right of the screen under > user settings > user information tab),
+- Tenancy OCID (Administration > Tenancy Details > Tenancy Information tab), and
+- The region you are working out of (i.e. us-phoenix-1, us-ashburn-1, etc.)
+
+
+You will be notified where your config file is written to:
+```Configuration file saved to: /Users/sergiog/.oci/config```
+
 
 
 ### 2 - List
@@ -184,6 +196,23 @@ Before deploying, you need to change the values in `config.json` file. The varia
   }
 }
 ```
+
+To modify your `config.json` file, navigate to your newly created directory (ocihpc-test in this case) and open the “config.json” file using texteditor or notepad. 
+
+![](./config_json.png " ")
+
+
+note that this is not the same config file we configured in step 1.
+
+For this config file, we will need:
+- The availability domain information that contains the HPC resources in our tenancy (Administration > Tenancy Details > Scroll down to the Service Limits section > Compute > and scroll down to find “BM.HPC2.36”) - In the screenshot below, we can see that we have a total of 6 BM.HPC2.36 machines to use in AD-2, 0 of which are currently in use. 
+
+![](./hpc_resource.png " ")
+
+- The Bastion AD can be any AD you chose as long as there are resources (VM.standard2.1 shape)
+Bastion shape should be filled in already - VM.Standard2.1
+- Node count - for the purposes of this lab, we will go with 2 so as to use up all HPC resources
+- Our public ssh key 
 
 
 After you change the values in `config.json`, you can deploy the stack with `ocihpc deploy <arguments>`. This command will create a Stack on Oracle Cloud Resource Manager and deploy the stack using it.

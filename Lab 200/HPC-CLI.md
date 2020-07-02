@@ -138,8 +138,10 @@ An example `config.json` for Cluster Network would look like this:
 
 In order to create your config file, you will need:
 - Your user OCID (found in profile section at the top right of the screen under > user settings > user information tab),
-- Tenancy OCID (Administration > Tenancy Details > Tenancy Information tab), and
-- The region you are working out of (i.e. us-phoenix-1, us-ashburn-1, etc.)
+- Tenancy OCID (Administration > Tenancy Details > Tenancy Information tab),
+- The region you are working out of (i.e. us-phoenix-1, us-ashburn-1, etc.),
+- User's fingerprint(found in user information tab),
+- Path to your API private signing key. 
 
 
 You will be notified where your config file is written to:

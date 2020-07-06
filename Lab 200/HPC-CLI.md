@@ -128,11 +128,11 @@ Now that you have a private / public key combo , you must add it to OCI Console 
 ### 1 - Configure
 This step describes the required configuration for the CLI and includes optional configurations that enable you to extend CLI functionality.
 
-Before using the CLI, you have to create a config file that contains the required credentials for working with your Oracle Cloud Infrastructure account. You can create this file using a setup dialog or manually, using a text editor.
+Before using the CLI, you have to create a config file in your .oci folder that contains the required credentials for working with your Oracle Cloud Infrastructure account. You can create this file using a setup dialog or manually, using a text editor.
 
 Run `ocihpc configure` to check if you have a valid configuration to access OCI. The tool will walk you through creating a configuration.
 
-An example `config.json` for Cluster Network would look like this:
+An example `config` file would look like this:
 
 ![](./oci_config.png " ")
 

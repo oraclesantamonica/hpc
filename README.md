@@ -1,4 +1,4 @@
-## Overview
+## Introduction
 
 High Performance Computing is changing product development and research enabling customers to solve complex problems faster. This means fewer prototypes, accelerates testing, and decreases time to market. Oracle offers on-demand HPC infrastructure, suitable for any HPC workload, based on the most advanced compute, storage, networking, and software technologies. You get all this at a fraction of the cost of building it yourself and avoid capacity utilization issues.
 
@@ -18,23 +18,12 @@ Labs 3 designed to assist in the assessment of the OpenFOAM CFD Software in Orac
 
 ## Goals for this workshop
 1. Prepare your private network in the Oracle Cloud Infrastructure
-2. Provision Exadata Cloud Service Infrastructure in a private OCI network
-3. Provision databases on your Exadata Cloud Service Infrastructure
-4. Configure a development system for use with your Exadata Cloud Service database
-5. Setup VPN Connectivity to your Exadata Cloud Service Infrastructure
-6. Setup, Discover, Manage and Monitor database with Enterprise Manager
-7. Data Safe with Exadata Cloud Service
-8. Migrate an on-prem application schema using Data Pump
-9. Real time migration of database using Oracle Goldengate Replication
-10. Backup and Recovery using Console and API's
-11. Protect your data with Database Vault
-12. Data Safe Advanced lab
-13. Use OCI CLI commands to work with Exadata Cloud Service
-14. Automation with Terraform
-15. Build and deploy Python application stacks on Exadata Cloud Service
-16. Build APEX application on Exadata Cloud Service
-17. Install and configure Swingbench to simulate a transaction processing workload
-18. build a docker container running node.js connected to EXACS database
+2. Provision High Performance Compute Instance in a private OCI network
+3. Configure a development system for use with your High Performance Compute Instance
+4. Use OCI CLI commands to work with High Performance Compute Instance
+5. Automation with Terraform
+6. Render OpenFoam projects with your High Performance Compute Instance
+
 
 
 # Workshop Overview

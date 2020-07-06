@@ -22,28 +22,26 @@ Labs 3 designed to assist in the assessment of the OpenFOAM CFD Software in Orac
 3. Configure a development system for use with your High Performance Compute Instance
 4. Use OCI CLI commands to work with High Performance Compute Instance
 5. Automation with Terraform
-6. Render OpenFoam projects with your High Performance Compute Instance
+6. Run OpenFoam projects with your High Performance Compute Instance
 
 
 
 # Workshop Overview
 
 ## Before You Begin
-**What is Exadata Cloud Service?**
+**What is High Performance Computing?**
 
-- Exadata Cloud Service is offered on Oracle Cloud Infrastructure, within OCI regions.
-- Exadata Cloud Service available in quarter Rack, Half Rack or full Rack configurations.
-- Exadata rack in OCI includes DB nodes, storage nodes and Infiniband switches.
-- The storage and compute nodes are connected via high bandwidth Infiniband network that
-provides RDMA based storage access to the compute nodes.
-- Exadata storage software runs on storage servers and offloads database SQL processing
-overheads.
-- Currently, a single VM per compute node is supported. It allows root access for customers
-while protecting hardware and network, DB nodes are virtualized using Xen based OVM.
-- Oracle Manages storage cells, switches, management or IB network while customer manages
-database compute nodes.
-- Exadata Cloud Service provides a control Plane, a Web-based self-service management
-interface for Exadata cloud service provisioning and interactive access to service administration function
+- HPC, or supercomputing, is like everyday computing, only more powerful. It is a way of processing huge volumes of data at very high speeds using multiple computers and storage devices as a cohesive fabric. HPC makes it possible to explore and find answers to some of the world’s biggest problems in science, engineering, and business.
+
+- A cluster network is a pool of high performance computing (HPC) instances that are connected with a high-bandwidth, ultra low-latency network. Each node in the cluster is a bare metal machine located in close physical proximity to the other nodes. A remote direct memory access (RDMA) network between nodes provides latency as low as single-digit microseconds, comparable to on-premises HPC clusters.
+
+- High Performance Computing is offered on Oracle Cloud Infrastructure, within OCI regions.
+- High Performance Computing Instance available in Oracle MarketPlace Image and BM.HPC2.36 in OCI.
+- High Performance Computing rack in Oracle MarketPlace Image includes HPC cluster nodes, cluster network and NFS share.
+- The compute nodes are connected via cluster network that provides RDMA based storage access to the compute nodes.
+- Currently, a single BM per compute node is supported. It allows root access for customers
+while protecting hardware and network, compute nodes are virtualized using BM.HPC2.36.
+
 
 **You are all set, let's begin!**
 

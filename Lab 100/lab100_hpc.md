@@ -1,4 +1,4 @@
-# Lab 100: Provisioning a Marketplace HPC Cluster
+# Lab 100: Provision HPC Cluster from Oracle MarketPlace Image
 
 ## Introduction
 

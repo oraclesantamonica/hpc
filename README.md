@@ -1,34 +1,20 @@
-## Introduction
+## Overview
 
-An Exadata Cloud Service DB system consists of a quarter rack, half rack, or full rack of compute nodes and
-storage servers, tied together by a high-speed, low-latency Infiniband network and intelligent
-Exadata software. You can configure automatic backups, optimize for different workloads, and
-scale up the system to meet increased demands.
+High Performance Computing is changing product development and research enabling customers to solve complex problems faster. This means fewer prototypes, accelerates testing, and decreases time to market. Oracle offers on-demand HPC infrastructure, suitable for any HPC workload, based on the most advanced compute, storage, networking, and software technologies. You get all this at a fraction of the cost of building it yourself and avoid capacity utilization issues.
 
-The compute nodes are each configured with a virtual machine (VM). You have root privilege for
-the compute node VMs, so you can load and run additional software on them. However, you do
-not have administrative access to the Exadata infrastructure components, such as the physical
-compute node hardware, network switches, power distribution units (PDUs), integrated lights-out
-management (ILOM) interfaces, or the Exadata Storage Servers, which are all administered by
-Oracle.
+Oracle provides the most elastic and scalable cloud infrastructure to run your HPC applications. With virtually unlimited capacity, engineers, researchers, and HPC system owners can innovate beyond the limitations of on-premises HPC infrastructure. Oracle delivers an integrated suite of services that provides everything needed to quickly and easily build and manage HPC clusters in the cloud to run the most compute intensive workloads across various industry verticals. These workloads span the traditional HPC applications, like genomics, computational chemistry, financial risk modeling, computer aided engineering, seismic imaging, and weather prediction, as well as emerging applications, like machine learning, deep learning, and autonomous driving.
 
-You have full administrative privileges for your databases, and you can connect to your databases
-by using Oracle Net Services from outside Oracle Cloud Infrastructure. You are responsible for
-database administration tasks such as creating tablespaces and managing database users. You
-can also customize the default automated maintenance setup, including backups, and you have
-full control of the recovery process in the event of a database failure.
+With Oracle Cloud Infrastructure, businesses can run performance intensive HPC workloads requiring millions of IOPs, millisecond latency, and many GB/s of bandwidth, on a pay per-use or non- metered model, saving 32% on a 3-year TCO.
 
-These hands-on lab guides provide step-by-step directions to setting up and using your Exadata Cloud Service platform in the Oracle Cloud Infrastructure.
+These hands-on lab guides provide step-by-step directions to setting up and using your High Performance Computing platform in the Oracle Cloud Infrastructure.
 
-Lab 1 - 5 deals with setting up the infrastructure and connectivity to Exadata Cloud Service.
+Lab 1 deals with setting up the High Performance Compute Instance in the Oracle Cloud Infrastructure.
 
-Labs 6 & 7 are geared towards Monitoring and Managing your Exadata Cloud Service databases.
+Labs 2 are geared towards Managing your High Performance Compute Instance using OCI CLI tools.
 
-Labs 8 - 10 are intended for Backup, Recovering and Migrating your databases.
+Labs 3 designed to assist in the assessment of the OpenFOAM CFD Software in Oracle Cloud Infrastructure.
 
-Lab 11 - 12 onwards demonstrate advanced lab guides for Database Vault and advanced Data safe lab guides.
 
-Lab 13 - 16 are additional labs which talks about connecting your Exadata Cloud Service databases with Python application, working with OCI CLI, build APEX applications and automating with Terraform.
 
 ## Goals for this workshop
 1. Prepare your private network in the Oracle Cloud Infrastructure
@@ -95,160 +81,6 @@ As a fleet administrator,
 
 As a database administrator,
 - Deploy database onto an Exadata Cloud Service Infrastructure
-
-
-## Lab 4: Configure a development system for use with your Exadata Cloud Service database
-
-**Key Objectives**:
-
-As a database user, DBA or application developer,
-
-- Configure a secure connection from your application instance to your dedicated autonomous database using Oracle SQL Developer, SQLCLI and SQL*Plus.
-
-
-## Lab 5: Setup VPN Connectivity to your Exadata Cloud Service Infrastructure
-
-**Key Objectives**:
-As a database user, DBA or application developer,
-- Configure a VPN server in OCI based on OpenVPN software
-- Configure your VPN client and connect to VPN Server
-
-
-
-## Lab 6: Setup, Discover, Manage and Monitor database with Enterprise Manager
-
-**Key Objectives**:
-
-As a System admin,
-
-- Install and configure Enterprise Manager on OCI
-- Configure Enterprise Manager with Exadata Cloud Service
-
-## Lab 7: Data Safe with Exadata Cloud Service
-
-**Key Objectives**:
-
-As an database admin,
-- Assess the security of a database by using the Security Assessment feature in Oracle Data Safe
-- Assess user security in your target database by using the User Assessment feature in Oracle Data Safe.
-- Fix some of the security issues based on the assessment findings
-- Discover sensitive data in database
-
-
-
-## Lab 8: Migrate an on-prem application schema using Data Pump
-
-**Key Objectives**:
-
-As an database admin,
-- Download a sample datapump export dump file
-- Upload .dmp file to OCI Object storage bucket
-- Setup cloud credentials and use data pump import to move data to your Exadata Cloud Service database
-
-
-
-## Lab 9: Real time migration of database using Oracle Goldengate Replication
-
-**Key Objectives**:
-
-As an database admin,
-- Replicate real time data from a simulated on-premise database to Exadata Cloud Service database.
-
-
-
-## Lab 10: Backup and Recovery using Console and API's
-
-**Key Objectives**:
-
-As an application developer, DBA user,
-
-- Configure Exadata Cloud Service database backup and Recovery using Console and API
-
-
-
-## Lab 11: Protect your data with Database Vault
-
-**Key Objectives**:
-
-As a database security admin,
-
-- Enable database vault in your Exadata Cloud Service database
-- Implement separation of duties to protect sensitive data in your database
-
-
-
-## Lab 12: Data Safe Advanced lab
-
-**Key Objectives**:
-
-As a database security admin,
-
-- Configure Data Masking and Auditing and Reporting for Exadata Cloud Service database
-
-
-## Lab 13: Use OCI CLI commands to work with Exadata Cloud Service
-
-
-**Key Objectives**:
-
-As a application developer, DBA or DevOps user,
-
-- Interact with Oracle Cloud Infrastructure resources using CLI
-
-
-
-## Lab 14: Automation with Terraform
-
-
-**Key Objectives**:
-
-As a database or System admin,
-
-- Deploy Exadata Cloud Service database using Terraform
-
-
-
-## Lab 15: Build and deploy Python application stacks on Exadata Cloud Service
-
-
-**Key Objectives**:
-
-As an application developer,
-
-- Learn how to deploy a python application and connect it your Exadata Cloud Service database instance
-
-
-## Lab 16: - Build APEX application on Exadata Cloud Service
-
-
-**Key Objectives**:
-
-As an application developer, DBA or DevOps user,
-
-- Access OCI autonomous database console and get URL for apex web console
-- Create a VNC connection to developer client VM and access apex on your database
-- Setup additional apex developer users
-
-## Lab 17: - Introduction to Swingbench and Oracle database
-
-
-**Key Objectives**:
-
-As an application developer, DBA or DevOps user,
-
-- Install and configure Swingbench to simulate a transaction processing workload
-- Configure Exadata Cloud Service Database with Swingbench
-
-## Lab 18: - Docker Application with EXACS
-
-**Key Objectives**:
-
-As an application developer, DBA or DevOps user,
-
-- To build a docker container running node.js
-- Connect it to an Exadata Cloud Service running in the Oracle cloud
-- Deploy the docker container on Oracle Compute Instance
-
 
 
 ## Appendix

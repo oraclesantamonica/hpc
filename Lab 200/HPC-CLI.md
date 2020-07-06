@@ -1,4 +1,4 @@
-# ocihpc - Oracle Cloud Infrastructure HPC deployment tool
+# Use OCI CLI commands and Terraform to work with HPC
 
 ## Introduction 
 

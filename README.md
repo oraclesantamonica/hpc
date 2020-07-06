@@ -63,12 +63,19 @@ As a developer,
 - Deploy HPC clusters of any size with our dedicated bare metal HPC compute instances and Mellanox RDMA networking
 
 
-## Lab 3: Run OpenFoam projects in HPC cluster
+## Lab 3-1: Run OpenFoam projects in HPC cluster
 
 **Key Objectives**:
 
 As a developer, data engineer,
 - Deploy OpenFoam projects onto HPC cluster in OCI
+
+## Lab 3-2: Run OpenFoam projects in standard VM on OCI
+
+**Key Objectives**:
+
+As a developer, data engineer,
+- Deploy OpenFoam projects onto standard VM in OCI (Cloud Trial account applies)
 
 
 ## Appendix

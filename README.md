@@ -46,12 +46,13 @@ while protecting hardware and network, compute nodes are virtualized using BM.HP
 **You are all set, let's begin!**
 
 
-## Lab 1: Prepare your private network in the Oracle Cloud Infrastructure (demo only)
+## Lab 1: Provision HPC Cluster from Oracle MarketPlace Image
 
 **Key Objectives**:
-- Create compartments and user groups with the right set of access policies for separation of duties
-- Create admin and database user accounts
-- Layout a secure network for the database and application infrastructure
+- Create 2 HPC cluster compute nodes 
+- Layout a secure cluster network for the HPC nodes and bastion nodes
+- Create NFS share between custer nodes
+
 
 
 ## Lab 2: Provision Exadata Infrastructure in a private OCI network (demo only)

@@ -55,22 +55,22 @@ while protecting hardware and network, compute nodes are virtualized using BM.HP
 
 
 
-## Lab 2: Provision Exadata Infrastructure in a private OCI network (demo only)
+## Lab 2: Use OCI CLI commands and Terraform to work with HPC
 
 **Key Objectives**:
 
-As a fleet administrator,
-- Deploy an Exadata Cloud Service Infrastructure in a pre-provisioned private network in your OCI account
+As a developer, 
+- Deploy HPC clusters of any size with our dedicated bare metal HPC compute instances and Mellanox RDMA networking
 
 
-## Lab 3: Provision databases on your Exadata Cloud Service Infrastructure (demo only)
+## Lab 3: Run OpenFoam projects in HPC cluster
 
 **Key Objectives**:
 
-As a database administrator,
-- Deploy database onto an Exadata Cloud Service Infrastructure
+As a developer, data engineer,
+- Deploy OpenFoam projects onto HPC cluster in OCI
 
 
 ## Appendix
 
-**This covers some general help for Windows users and other occasional issues you may encounter while working with your Exadata Cloud Service.**
+**This covers some general help for Windows users and other occasional issues you may encounter while working with your High Performance Computing Instance.**

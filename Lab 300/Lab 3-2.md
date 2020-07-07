@@ -29,9 +29,9 @@ As a developer, data Engineer,
 ### **STEP 1: Provision Oracle Virtual Cloud Network**
 
 Before creating an instance, we need to configure a Virtual Cloud Network. Select the menu on the top left, then select Networking and Virtual Cloud Networks
-![](./Lab 300/vcn.png " ")
-![](./Lab 300/create_vcn.png " ")
-![](./Lab 300/vcn_content.png " ")
+![](./vcn.png " ")
+![](./create_vcn.png " ")
+![](./vcn_content.png " ")
 
 On the next page, select the following for your VCN:
 - Name 

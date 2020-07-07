@@ -5,7 +5,7 @@
 In this lab you will be provisioning an HPC Cluster from the OCI Marketplace. The OCI Marketplace is a one-stop shop for a wide variety of industry solutions that can easily be deployed within our cloud console. Here you will be leveraging this marketplace for Automated HPC Cluster Deployment. The template from the marketplace provides a base for a High Performance Computing solution, including all necessary components to start a workload with minimum effort. As these labs progress, you will see how such a baseline can be integrated and utilized by third party applications to accelerate your workflow.
 
 ### Navigate to the OCI Marketplace
-1. Click the Menu Navigation Button on the top left corner.
+1. Click the Hamburger Menu (≡) on the top left corner.
  <img src="img/click_hamburger.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
 2. Scroll down and click Marketplace.
 <img src="img/click_marketplace.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>

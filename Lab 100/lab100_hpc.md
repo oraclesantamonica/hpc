@@ -5,35 +5,33 @@
 In this lab you will be provisioning an HPC Cluster from the OCI Marketplace. The OCI Marketplace is a one-stop shop for a wide variety of industry solutions that can easily be deployed within our cloud console. Here you will be leveraging this marketplace for Automated HPC Cluster Deployment. The template from the marketplace provides a base for a High Performance Computing solution, including all necessary components to start a workload with minimum effort. As these labs progress, you will see how such a baseline can be integrated and utilized by third party applications to accelerate your workflow.
 
 ### Navigate to the OCI Marketplace
-1. Search the marketplace for **HPC**
-![market](marketplace.png)
+1. Click the Hamburger Menu (≡) on the top left corner.
+ <img src="img/click_hamburger.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
+2. Scroll down and click Marketplace.
+<img src="img/click_marketplace.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
+3. Search the marketplace for **HPC** and select HPC Cluster.
+<img src="img/marketplace.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
 
-2. Select **HPC Cluster**
-
-3. Review the and accept the *Oracle Standard Terms and Restrictions* and
+4. Review the and accept the *Oracle Standard Terms and Restrictions* and
 click **Launch Stack**.
-![market](marketplace_hpc.png)
-
+<img src="img/launch_stack.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
 ### Configure the HPC Stack
 After launching the stack you'll be redirected to the Create Stack Wizard where you'll fill in the Stack information.
 
 1. In **Stack Information** give the Stack a name and *(optionally)* specify to deploy in a compartment that you are currently not in.
-![Create Stack](stack_p1.png)
+<img src="img/stack_p1.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
 
 2. Select the desired **AD** for the compute shapes and the bastion.
 
 3. Copy-paste your public **ssh key**
-![stack config](stack_p2_1.png)
-
+<img src="img/stack_p2_1.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
 4. Type in the number of **Compute Instances** for the cluster
-![stack config 2](stack_p2_2.png)
-
+<img src="img/stack_p2_2.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
 5. Under **Network Options** leave the defaults
-![stack config 3](stack_p2_3.png)
+<img src="img/stack_p2_3.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
 
 6. Click **Next** to review the configuration.
-![stack config review](stack_p3.png)
-
+<img src="img/stack_p3.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
 7. Click **Create**
 
 **Note:** It will take approximately 15 minutes to provision the Stack.
@@ -47,7 +45,8 @@ Once you've created the Stack it will redirect you to a page where you can view 
  - **Outputs**
  - **View State** of the job
 
-![stack job](stack_detail_provisioning.png)
+<img src="img/stack_detail_provisioning.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
 
 To navigate to this page where you can view all your Stacks in your current compartment click on the Hamburger Menu (≡) on the top left and under **Solutions and Platform** hover over **Resource Manager** > **Stacks**.
-![nav resource manager](nav_resource_manager.png)
+
+<img src="img/nav_resource_manager.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>

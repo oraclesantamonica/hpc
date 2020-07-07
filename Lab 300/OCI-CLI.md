@@ -217,4 +217,4 @@ Return to the console logged in to the head node, and take the private IP addres
 
 
 
-These are a handful of examples on using the OCI CLI REST interface to work with databases in your Exadata Cloud Service infrastructure. For a complete command reference,check out OCI documentation [here](https://docs.cloud.oracle.com/en-us/iaas/tools/oci-cli/2.9.9/oci_cli_docs/cmdref/db/database.html).
+These are detailed information about managing High Performance Compute Instance. For a complete command reference,check out OCI documentation [here](https://docs.cloud.oracle.com/en-us/iaas/Content/Compute/Tasks/managingclusternetworks.htm?Highlight=hpc).

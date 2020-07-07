@@ -251,7 +251,19 @@ You can connect to your head node using the command: ssh opc@$123.221.10.8 -i <l
 
 You can also get the connection details by running `ocihpc get ip` command.
 
-### 5 - Delete
+### 6 - Manage
+In addition, you can use cli commands to easily manage and keep tracks of your resources:
+
+```
+- To generate a list of all the stacks deployed in a specific compartment: `oci resource-manager job list -c [OCID OF COMPARTMENT]`
+- To generate a list of jobs in a stack or compartment, ordered by time created: `oci resource-manager job list -c [COMPARTMENT OCID]`
+- To review a job along with the job details: `oci resource-manager job get --job-id [OCID OF THE JOB]`
+- To view log entries for the specified job in JSON format: `oci resource-manager job get-job-logs --job-id [OCID OF THE JOB]`
+- To move a Stack and it's associated Jobs into a different compartment: `oci resource-manager stack change-compartment -c [OCID OF NEW COMPARTMENT] --stack-id [OCID OF THE STACK]`
+```
+
+
+### 7 - Delete
 When you are done with your deployment, you can delete it by changing to the stack folder and running `ocihpc delete --stack <stack name>`.
 
 Example:

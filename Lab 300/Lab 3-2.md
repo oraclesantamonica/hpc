@@ -57,9 +57,14 @@ Scroll to the bottom and click Create VCN
     - Security List: select security list created in previous step
 - Click **create subnet**
 
+    ![](./create_subnet.png " ")
+    ![](./create_subnet_content.png " ")
+
 #### Create Internet Gateway ####
 
 - click on hpc_vcn you created and on the **_Resources_** menu on the left side of the page, select **_Internet Gateway_**, create Internet Gateway.
+![](./create_IG.png " ")
+![](./create_IG_content.png " ")
 
 *Note: That will create the internet gateway, and it will need to be associated with a route table. In this case, since the Default Route Table will be used for the public subnet, the internet gateway should be associated with that route table.*
 
@@ -68,6 +73,8 @@ Scroll to the bottom and click Create VCN
     - Destination CIDR Block: 0.0.0.0/0
     - Target Internet Gateway in compartment: Internet Gateway you created
 
+    ![](./route_table.png " ")
+    ![](./route_rules.png " ")
 
 
 ### **STEP 2: Create Cluster Nodes**
@@ -80,6 +87,10 @@ _Note: For this lab we will be utilizing only the basic VM.Standard2.1 shape, bu
 #### Create Headnode ####
 
 - On the top left menu, select Compute and create instance.
+        ![](./compute.png " ")
+        ![](./compute_bm.png " ")
+        ![](./compute_vm.png " ")
+
     - Name: i.e. hpc_head
     - Image or operating system:latest version Oracle Linux(default)
     - Availblity Domain: domain available for VM.Standard 2.1 shapes
@@ -131,6 +142,7 @@ Return to the console logged in to the head node, and take the private IP addres
 - Select worker node and click on **_Attached VNICs_** in the **_resources_** menu on the left
 - Select **_Edit VNIC_**
 - Uncheck **_Skip Source/ Destination Check_** if it is checked and click **_Update VNICs_**
+    ![](./nat_gateway.png " ")
 
 ### **STEP 4: Mounting a drive**
 *Note: Only if the node shape has a NVMe attached (BM.HPC2.36 has one, not VM.Standard2.1), HPC machines have local NVMe storage but it is not mounted by default.*
@@ -211,12 +223,6 @@ Return to the console logged in to the head node, and take the private IP addres
 
 
 ### **STEP 5: Creating a Network File System**
-
-
-
-
-
-![](./images/oci-cli/OCI-Setup-Config.png " ")
 
 
 

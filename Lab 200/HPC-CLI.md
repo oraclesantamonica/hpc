@@ -12,6 +12,13 @@ Benefits of using HPC CLI include:
 3. Supports Message Passing Interface (MPI) Deployment includes a complete set of software packages for running parallel processing with RDMA, including Mellanox OFED with Open MPI, Intel MPI, and Platform MPI.
 4. Customizable You can execute your own terraform scripts or add to the existing scripts provided with the tool to install your own applications.
 
+## Objectives
+
+As a Developer or Data Engineer,
+
+- Deploy HPC Cluster Network using Oracle Command Line Interface
+- View, run and manage the Stack via Cli
+
 ## Required Artifacts
 
 ### Policies
@@ -123,7 +130,7 @@ Now that you have a private / public key combo , you must add it to OCI Console 
 ![](./AddPublicKey.png " ")
 
 
-## Using ocihpc
+## Steps
 
 ### 1 - Configure
 This step describes the required configuration for the CLI and includes optional configurations that enable you to extend CLI functionality.

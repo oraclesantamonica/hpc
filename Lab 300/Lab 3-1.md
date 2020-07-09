@@ -260,7 +260,7 @@ Running reconstructPar on /mnt/gluster-share/work
 
 
 
-![](images/23-Allrun_Output.png " ")
+
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>

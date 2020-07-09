@@ -43,7 +43,7 @@ Before you begin using this lab, make sure to have access to the following:
 ### **STEP 1: Launch marketplace image**
 Before user launches the marketplace image, check for the Availability domain where 2 or more HPC nodes with shape BM.HPC2.36 are available. Goto Menu -> Governance -> Limits, Quotas and Usage
 
-![](/images/01-Service_Limits.png " ")
+![](images/01-Service_Limits.png " ")
 
 
 <p>&nbsp;</p>
@@ -51,7 +51,7 @@ Before user launches the marketplace image, check for the Availability domain wh
 
 Goto Menu -> Marketplace -> Applications
 
-![](/images/02-Marketplace.png " ")
+![](images/02-Marketplace.png " ")
 
 
 <p>&nbsp;</p>
@@ -59,14 +59,14 @@ Goto Menu -> Marketplace -> Applications
 
 In the searchbox type "cfd"
 
-![](/images/03-Search_marketplace.png " ")
+![](images/03-Search_marketplace.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
 Click on the Image, select it and then Click on "Launch Stack" button. Check that you are in the right compartment.
 
-![](/images/04-Launch_Stack.png " ")
+![](images/04-Launch_Stack.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -75,7 +75,7 @@ Once the Stack is Launched, fill in the details to create resources including HP
 
 Provide name of the Stack below
 
-![](/images/05-Create_Stack01.png " ")
+![](images/05-Create_Stack01.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -83,13 +83,13 @@ Provide name of the Stack below
 
 Select the Availability Domain where you have HPC nodes available for provisioning. Provide the ssh public key that will be needed to connect to Bastion server.
 
-![](/images/06-Create_Stack02.png " ")
+![](images/06-Create_Stack02.png " ")
 
 
 
 Select the Availability Domain to provision Bastion server. It can be differnt from the Availability Domain on HPC nodes. Select Bastion host shape of your choice. Enable the checkbox to install VNC server on Bastion server and provide the password that will be needed to make VNC connection later on.
 
-![](/images/07-Create_Stack03.png " ")
+![](images/07-Create_Stack03.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -97,7 +97,7 @@ Select the Availability Domain to provision Bastion server. It can be differnt f
 
 For Worker nodes, the only option that is selected is BM.HPC2.36. You will need a minimum of 2 HPC compute shapes to complete the provisioning. Select 2 or more compute nodes in the below screen. Rest all of the options can be left to default.
 
-![](/images/08-Create_Stack04.png " ")
+![](images/08-Create_Stack04.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -105,7 +105,7 @@ For Worker nodes, the only option that is selected is BM.HPC2.36. You will need 
 
 Under Network options, create a new VCN using the default values passed in the stack. This Demo creates new VCN created via this stack. But there is option to use existing VCN as well.
 
-![](/images/09-Create_Stack05.png " ")
+![](images/09-Create_Stack05.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -113,7 +113,7 @@ Under Network options, create a new VCN using the default values passed in the s
 
 For File system section, use the below options that will create NFS mount and install gluster filesystem on top of it.
 
-![](/images/10-Create_Stack06.png " ")
+![](images/10-Create_Stack06.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -121,7 +121,7 @@ For File system section, use the below options that will create NFS mount and in
 
 Click on "INSTALL OPENFOAM" checkbox to install OpenFoam application in this HPC stack.
 
-![](/images/11-Create_Stack07.png " ")
+![](images/11-Create_Stack07.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -129,7 +129,7 @@ Click on "INSTALL OPENFOAM" checkbox to install OpenFoam application in this HPC
 
 On the Last page of the stack verify the details that was entered and if everything is OK then click the "Create" button to start the provisioning of the infrastructure and software installation.
 
-![](/images/12-Create_Stack08.png " ")
+![](images/12-Create_Stack08.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -137,7 +137,7 @@ On the Last page of the stack verify the details that was entered and if everyth
 
 Verify the progress of installation of the HPC stack 
 
-![](/images/13-StackJob.png " ")
+![](images/13-StackJob.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -145,7 +145,7 @@ Verify the progress of installation of the HPC stack
 
 Once the provisioning completes in around 20 minutes time, the logfile should contain the following message. Logs can be found at Menu -> Resource Manager -> Stacks(click your stack name) -> Jobs (Click on the job name link to view the complete log)
 
-![](/images/14-StackJobDetails.png " ")
+![](images/14-StackJobDetails.png " ")
 
 
 <p>&nbsp;</p>
@@ -156,7 +156,7 @@ Once the provisioning completes in around 20 minutes time, the logfile should co
 
 Click on "Associate Resources" link on the left of the screen to see the infrastructure resources that were provisioned by this stack. Associate resources can be found at Menu -> Resource Manager -> Stacks(click your stack name) -> Jobs (Click on the job name link) -> Associate Resources
 
-![](/images/15-Stack_Resources.png " ")
+![](images/15-Stack_Resources.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -165,7 +165,7 @@ Click on "Associate Resources" link on the left of the screen to see the infrast
 
 Under Compute -> Instances, 3 compute instance will be provisioned, 2 HPC nodes in private network and 1 Bastion server with Public IP address.
 
-![](/images/16-Compute_Details.png " ")
+![](images/16-Compute_Details.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -174,14 +174,14 @@ Under Compute -> Instances, 3 compute instance will be provisioned, 2 HPC nodes 
 
 Connect to the Bastion server using public IP address as opc user using the ssh private key for which a public key was uploaded in the stack above. Use this method to connect from Linux/Mac Desktop. For Windows desktop use Putty and provide ppk private key to make connection.
 
-![](/images/17-Bastion_ssh.png " ")
+![](images/17-Bastion_ssh.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
 Verify the shared NFS storage that is mounted on 2 HPC nodes and the bastion server. This NFS storage contains the OpenFoam software which will be used to run the workload.
 
-![](/images/18-Bastion_storage.png " ")
+![](images/18-Bastion_storage.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -189,7 +189,7 @@ Verify the shared NFS storage that is mounted on 2 HPC nodes and the bastion ser
 
 OpenFoam application is hosted under "/mnt/gluster-share/work" folder. Check for the hostfile that contains the priavte IP address of the 2 HPC nodes on which the workload will run.
 
-![](/images/19-Bastion_openfoam.png " ")
+![](images/19-Bastion_openfoam.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -197,7 +197,7 @@ OpenFoam application is hosted under "/mnt/gluster-share/work" folder. Check for
 
 The below output shows a running VNC server on port 5901. This port will be used to make VNC connection to bastion host.
 
-![](/images/20-Bastion_VNCdetails.png " ")
+![](images/20-Bastion_VNCdetails.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -205,14 +205,14 @@ The below output shows a running VNC server on port 5901. This port will be used
 
 Check from the security list of Bastion server under Ingress rules that port 5901 is allowed. In case VNC is running on any other port and if that port is not allowed for ingress traffic in security list, create a new security rule for the same.
 
-![](/images/21-SecList_OpenVNC_Port.png " ")
+![](images/21-SecList_OpenVNC_Port.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
 Verify the names of the HPC nodes
 
-![](/images/22-ListHPCNodes.png " ")
+![](images/22-ListHPCNodes.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -260,14 +260,14 @@ Running reconstructPar on /mnt/gluster-share/work
 
 
 
-![](/images/23-Allrun_Output.png " ")
+![](images/23-Allrun_Output.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
 Once the workload completes successfully, configure VNC client on your machine like this. Provide Public IP of Bastion server and VNC port
 
-![](/images/24-VNC_Connection.png " ")
+![](images/24-VNC_Connection.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -283,7 +283,7 @@ $ ssh -L 5901:localhost:5901 -i Dropbox/amar_priv_key -N -f -l opc 150.136.41.3
 
 Do not close the above ssh tunnel terminal window. Now initiate VNC session and this time instead of IP address use "localhost" on port 5901, even though this port is not opened in the security list of the subnet.
 
-![](/images/28-ssh_Tunnel.png " ")
+![](images/28-ssh_Tunnel.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -299,14 +299,14 @@ Start the Paraview application from within the bastion server
 
 In Paraview application window, File -> Open -> Path "/mnt/gluster-share/work" and select file name motorbike.foam. It will be zero byte file and that should be fine.
 
-![](/images/25-Paraview_Menu.png " ")
+![](images/25-Paraview_Menu.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
 On Left of the window, Under Properties tab, select Mesh Regions to select all the values and then unselect the top values which does not start with motorBike_ prefix. Make sure that all values starting with motorBike_ are selected. Click on the Apply button, some errors will pop up, ignore the error window that pops up to view the rendering of the image in VNC console.
 
-![](/images/26-Mesh_Regions.png " ")
+![](images/26-Mesh_Regions.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -314,7 +314,7 @@ On Left of the window, Under Properties tab, select Mesh Regions to select all t
 
 An image like below will be rendered on the screen. Based on some display settings, the image on the screen might look a bit different. 
 
-![](/images/27-Image_Rendering.png " ")
+![](images/27-Image_Rendering.png " ")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>

@@ -2,7 +2,7 @@
 Setting up of the HPC hardware and deploying application software on top of it can take a long time and include various complex operations. With this demo all these tasks are automated within a OCI marketplace image and a fully working HPC environment along with OpenFoam simulation software is available right after the provisioning. All that is needed is to execute the workload on the fully functional HPC environment and run the visualisation application like Paraview to render the output. The total time to provision and running of workload can be completed in less than a hour.
 
 ## Reference architecture
-![](/images/29_Architecture.png " ")
+![](images/29_Architecture.png " ")
 
 ## Objectives
 - Provision a fully functional HPC enviorment using OCI marketplace image

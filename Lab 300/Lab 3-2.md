@@ -224,6 +224,214 @@ Return to the console logged in to the head node, and take the private IP addres
 
 ### **STEP 5: Creating a Network File System**
 
+- Create Mount Target. On the top left menu, click **File Storage** and **Mount Target**.
+
+    - New Mount Target Name: Enter a name (example: openfoam_fs)
+    - Virtual Cloud Network: Select the VCN created above
+    - Subnet: Select the public VCN
+- Headnode. <br/>
+Headnode is in a public subnet, we will keep the firewall up and add an exception through
+    ```
+        $ sudo firewall-cmd --permanent --zone=public --add-service=nfs
+        $ sudo firewall-cmd --reload
+    ```
+
+Activate the nfs-server and make the directory
+    ```
+        $ sudo yum -y install nfs-utils
+        $ sudo systemctl enable $ nfs-server.service
+        $ sudo systemctl start  $ nfs-server.service
+        $ sudo mkdir /mnt/share
+        $ sudo chmod 777 /mnt/share
+    ```
+<br/>
+Edit the file /etc/exports. Add the line /mnt/share 10.0.0.0/16
+
+    ```
+        $ sudo vi /etc/exports
+
+        $ sudo exportfs -a  
+    ```
+
+- Worker node <br/>
+On the worker nodes, since they are in a private subnet with security list restricting access, we can disable the firewall altogether. Then, we can install nfs-utils tools and mount the drive.
+
+To mount the drive, the private IP of the headnode will be required. You can find it in the instance details in the OCI console under instance details where the public IP is presented, or find it by running the command **ifconfig** on the headnode. It will probably be something like 10.0.0.2, 10.0.1.2 or 10.0.2.2 depending on the CIDR block of the public subnet.
+
+```
+$ sudo systemctl stop firewalld
+$ sudo yum -y install nfs-utils
+$ sudo mkdir /mnt/share
+$ sudo mount <headnode-private-ip-address>:/mnt/share/mnt/share
+```
+
+### **STEP 6: Install OpenFOAM**
+- Connecting all worker nodes <br/>
+Each worker node needs to be able to talk to all the worker nodes. SSH communication works but most applications have issues if all the hosts are not in the known host file. To disable the known host check for nodes with address in the VCN, you can deactivate with the following commands. You may need to modify it slightly if your have different addresses in your subnets.
+```
+    for i in 0 1 2 3
+    do
+        echo Host 10.0.$i.* | sudo tee -a ~/.ssh/config
+        echo "    StrictHostKeyChecking no" | sudo tee -a ~/.ssh/config
+    done
+```
+- Create a machinelist <br/>
+OpenFOAM on the headnode does not automatically know which compute nodes are available. You can create a machinefile at /mnt/share/machinelist.txt with the private IP address of all the nodes along with the number of CPUs available. The headnode should also be included. The format for the entries is private-ip-address cpu=number-of-coresf
+
+```
+    10.0.0.2 cpu=1
+    10.0.3.2 cpu=1
+```
+
+- Headnode <br/>
+Install from sources, modify the path to the tarballs in the next commands. This example has the foundation OpenFOAM sources. OpenFOAM from ESI has also been tested. To share the installation between the different compute nodes, install on the network file system.
+
+
+```
+    $ sudo yum groupinstall -y 'Development Tools'
+    $ sudo yum -y install devtoolset-8 gcc-c++ zlib-devel openmpi openmpi-devel
+    $ cd /mnt/share
+    $ wget -O - http://dl.openfoam.org/source/7 | tar xvz
+    $ wget -O - http://dl.openfoam.org/third-party/7 | tar xvz
+    $ mv OpenFOAM-7-version-7 OpenFOAM-7
+    $ mv ThirdParty-7-version-7 ThirdParty-7
+    $ export PATH=/usr/lib64/openmpi/bin/:/usr/lib64/qt5/bin/:$PATH
+    $ echo export PATH=/usr/lib64/openmpi/bin/:\$PATH | sudo tee -a ~/.bashrc
+    $ echo export $ LD_LIBRARY_PATH=/usr/lib64/openmpi/lib/:\$LD_LIBRARY_PATH | sudo tee -a ~/.bashrc
+    $ echo source /mnt/share/OpenFOAM-7/etc/bashrc | sudo tee -a ~/.bashrc
+    $ sudo ln -s /usr/lib64/libboost_thread-mt.so /usr/lib64/libboost_thread.so
+    $ source ~/.bashrc
+    $ cd /mnt/share/OpenFOAM-7
+    $ ./Allwmake -j
+
+```
+- Worker node
+```
+$ sudo yum -y install openmpi openmpi-devel
+$ cd /mnt/share
+$ export PATH=/usr/lib64/openmpi/bin/:/usr/lib64/qt5/bin/:$PATH
+$ echo export PATH=/usr/lib64/openmpi/bin/:\$PATH | $ sudo tee -a ~/.bashrc
+$ echo export $ LD_LIBRARY_PATH=/usr/lib64/openmpi/lib/:\$LD_LIBRARY_PATH | sudo tee -a ~/.bashrc
+$ echo source /mnt/share/OpenFOAM-7/etc/bashrc | $ sudo tee -a ~/.bashrc
+$ sudo ln -s /usr/lib64/libboost_thread-mt.so /usr/lib64/libboost_thread.so
+$ source ~/.bashrc
+
+```
+
+
+### **STEP 7: Run simulation workload and Render the output**
+
+On Headnode, run the following commands that will be needed to render the output using Paraview package.
+
+```
+sudo yum install -y mesa-libGLU
+cd /mnt/share
+curl -d submit="Download" -d version="v4.4" -d type="binary" -d os="Linux" -d downloadFile="ParaView-4.4.0-Qt4-Linux-64bit.tar.gz" https://www.paraview.org/paraview-downloads/download.php > file.tar.gz
+tar -xf file.tar.gz
+```
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+Run script ![](./scripts/motorbike_RDMA.tgz "") in /mnt/share/work in one of worker nodes
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+Connect to one of the worker nodes from headnode and execute the workload
+
+```
+$ ssh worker_node_IP
+$ cd /mnt/share/work/
+$ ./Allrun 36
+```
+
+```
+$ ./Allrun 36
+$ Cleaning /mnt/share/work case
+$ Mesh Dimensions: (40 16 16)
+$ Cores:36: 6, 6, 1
+$ Running surfaceFeatures on /mnt/share/work
+$ Running blockMesh on /mnt/share/work
+$ Running decomposePar on /mnt/share/work
+$ Running snappyHexMesh
+$ Running patchsummary
+$ Running potentialFoam
+$ Running simpleFoam
+$ Running reconstructParMesh on /mnt/share/work
+$ Running reconstructPar on /mnt/share/work
+219.95
+$
+```
+
+
+
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+Once the workload completes successfully, configure VNC client on your machine like this. Provide Public IP of Bastion server and VNC port
+
+![](images/24-VNC_Connection.png " ")
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+OPTIONALLY, In case you are not allowed to open VNC port 5901 or due to security reason want to make ssh tunnel for this port, use the following command to make ssh tunnel on port 5901 without opening the port in the security list
+
+Create tunnel from your laptop/desktop using the following command from terminal window. Here communication for port 5901 will be made on ssh port 22 and the IP address 150.136.41.3 is the public IP address of bastion server.
+
+```
+$ ssh -L 5901:localhost:5901 -i Dropbox/amar_priv_key -N -f -l opc 150.136.41.3
+```
+
+Do not close the above ssh tunnel terminal window. Now initiate VNC session and this time instead of IP address use "localhost" on port 5901, even though this port is not opened in the security list of the subnet.
+
+![](images/28-ssh_Tunnel.png " ")
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+Start the Paraview application from within the bastion server
+
+```
+[opc@accurate-swan-bastion ~]$ cd /mnt/gluster-share/ParaView-4.4.0-Qt4-Linux-64bit/bin/
+[opc@accurate-swan-bastion bin]$ ./paraview
+```
+
+
+In Paraview application window, File -> Open -> Path "/mnt/gluster-share/work" and select file name motorbike.foam. It will be zero byte file and that should be fine.
+
+![](images/25-Paraview_Menu.png " ")
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+On Left of the window, Under Properties tab, select Mesh Regions to select all the values and then unselect the top values which does not start with motorBike_ prefix. Make sure that all values starting with motorBike_ are selected. Click on the Apply button, some errors will pop up, ignore the error window that pops up to view the rendering of the image in VNC console.
+
+![](images/26-Mesh_Regions.png " ")
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+An image like below will be rendered on the screen. Based on some display settings, the image on the screen might look a bit different. 
+
+![](images/27-Image_Rendering.png " ")
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+This completes the demo for running OpenFoam application on HPC compute instances.
+
+<p>&nbsp;</p>
+
+
+
 
 
 These are detailed information about managing High Performance Compute Instance. For a complete command reference,check out OCI documentation [here](https://docs.cloud.oracle.com/en-us/iaas/Content/Compute/Tasks/managingclusternetworks.htm?Highlight=hpc).

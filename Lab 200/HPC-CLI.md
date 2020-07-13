@@ -12,6 +12,13 @@ Benefits of using HPC CLI include:
 3. Supports Message Passing Interface (MPI) Deployment includes a complete set of software packages for running parallel processing with RDMA, including Mellanox OFED with Open MPI, Intel MPI, and Platform MPI.
 4. Customizable You can execute your own terraform scripts or add to the existing scripts provided with the tool to install your own applications.
 
+## Objectives
+
+As a Developer or Data Engineer,
+
+- Deploy HPC Cluster Network using Oracle Command Line Interface
+- View, run and manage the Stack via Cli
+
 ## Required Artifacts
 
 ### Policies
@@ -123,7 +130,7 @@ Now that you have a private / public key combo , you must add it to OCI Console 
 ![](./AddPublicKey.png " ")
 
 
-## Using ocihpc
+## Steps
 
 ### 1 - Configure
 This step describes the required configuration for the CLI and includes optional configurations that enable you to extend CLI functionality.
@@ -131,6 +138,9 @@ This step describes the required configuration for the CLI and includes optional
 Before using the CLI, you have to create a config file in your .oci folder that contains the required credentials for working with your Oracle Cloud Infrastructure account. You can create this file using a setup dialog or manually, using a text editor.
 
 Run `ocihpc configure` to check if you have a valid configuration to access OCI. The tool will walk you through creating a configuration.
+
+You will be notified where your config file is written to:
+```Configuration file saved to: /Users/enjli/.oci/config```
 
 An example `config` file would look like this:
 
@@ -143,9 +153,6 @@ In order to create your config file, you will need:
 - User's fingerprint(found in user information tab),
 - Path to your API private signing key. 
 
-
-You will be notified where your config file is written to:
-```Configuration file saved to: /Users/sergiog/.oci/config```
 
 
 
@@ -254,13 +261,15 @@ You can also get the connection details by running `ocihpc get ip` command.
 ### 6 - Manage
 In addition, you can use cli commands to easily manage and keep tracks of your resources:
 
-```
 - To generate a list of all the stacks deployed in a specific compartment: `oci resource-manager job list -c [OCID OF COMPARTMENT]`
+
 - To generate a list of jobs in a stack or compartment, ordered by time created: `oci resource-manager job list -c [COMPARTMENT OCID]`
+
 - To review a job along with the job details: `oci resource-manager job get --job-id [OCID OF THE JOB]`
+
 - To view log entries for the specified job in JSON format: `oci resource-manager job get-job-logs --job-id [OCID OF THE JOB]`
+
 - To move a Stack and it's associated Jobs into a different compartment: `oci resource-manager stack change-compartment -c [OCID OF NEW COMPARTMENT] --stack-id [OCID OF THE STACK]`
-```
 
 
 ### 7 - Delete

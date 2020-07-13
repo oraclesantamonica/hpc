@@ -394,8 +394,8 @@ Do not close the above ssh tunnel terminal window. Now initiate VNC session and 
 Start the Paraview application from within the bastion server
 
 ```
-[opc@accurate-swan-bastion ~]$ cd /mnt/gluster-share/ParaView-4.4.0-Qt4-Linux-64bit/bin/
-[opc@accurate-swan-bastion bin]$ ./paraview
+$ cd /mnt/gluster-share/ParaView-4.4.0-Qt4-Linux-64bit/bin/
+$ ./paraview
 ```
 
 

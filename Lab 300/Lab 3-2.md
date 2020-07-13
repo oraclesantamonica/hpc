@@ -232,25 +232,25 @@ Return to the console logged in to the head node, and take the private IP addres
 - Headnode. <br/>
 Headnode is in a public subnet, we will keep the firewall up and add an exception through
     ```
-        $ sudo firewall-cmd --permanent --zone=public --add-service=nfs
-        $ sudo firewall-cmd --reload
+    $ sudo firewall-cmd --permanent --zone=public --add-service=nfs
+    $ sudo firewall-cmd --reload
     ```
 
 Activate the nfs-server and make the directory
     ```
-        $ sudo yum -y install nfs-utils
-        $ sudo systemctl enable $ nfs-server.service
-        $ sudo systemctl start  $ nfs-server.service
-        $ sudo mkdir /mnt/share
-        $ sudo chmod 777 /mnt/share
+    $ sudo yum -y install nfs-utils
+    $ sudo systemctl enable nfs-server.service
+    $ sudo systemctl start nfs-server.service
+    $ sudo mkdir /mnt/share
+    $ sudo chmod 777 /mnt/share
     ```
 <br/>
 Edit the file /etc/exports. Add the line /mnt/share 10.0.0.0/16
 
     ```
-        $ sudo vi /etc/exports
+    $ sudo vi /etc/exports
 
-        $ sudo exportfs -a  
+    $ sudo exportfs -a  
     ```
 
 - Worker node <br/>
@@ -269,18 +269,18 @@ $ sudo mount <headnode-private-ip-address>:/mnt/share/mnt/share
 - Connecting all worker nodes <br/>
 Each worker node needs to be able to talk to all the worker nodes. SSH communication works but most applications have issues if all the hosts are not in the known host file. To disable the known host check for nodes with address in the VCN, you can deactivate with the following commands. You may need to modify it slightly if your have different addresses in your subnets.
 ```
-    for i in 0 1 2 3
-    do
-        echo Host 10.0.$i.* | sudo tee -a ~/.ssh/config
-        echo "    StrictHostKeyChecking no" | sudo tee -a ~/.ssh/config
-    done
+for i in 0 1 2 3
+do
+    echo Host 10.0.$i.* | sudo tee -a ~/.ssh/config
+    echo "    StrictHostKeyChecking no" | sudo tee -a ~/.ssh/config
+done
 ```
 - Create a machinelist <br/>
 OpenFOAM on the headnode does not automatically know which compute nodes are available. You can create a machinefile at /mnt/share/machinelist.txt with the private IP address of all the nodes along with the number of CPUs available. The headnode should also be included. The format for the entries is private-ip-address cpu=number-of-coresf
 
 ```
-    10.0.0.2 cpu=1
-    10.0.3.2 cpu=1
+10.0.0.2 cpu=1
+10.0.3.2 cpu=1
 ```
 
 - Headnode <br/>
@@ -288,21 +288,21 @@ Install from sources, modify the path to the tarballs in the next commands. This
 
 
 ```
-    $ sudo yum groupinstall -y 'Development Tools'
-    $ sudo yum -y install devtoolset-8 gcc-c++ zlib-devel openmpi openmpi-devel
-    $ cd /mnt/share
-    $ wget -O - http://dl.openfoam.org/source/7 | tar xvz
-    $ wget -O - http://dl.openfoam.org/third-party/7 | tar xvz
-    $ mv OpenFOAM-7-version-7 OpenFOAM-7
-    $ mv ThirdParty-7-version-7 ThirdParty-7
-    $ export PATH=/usr/lib64/openmpi/bin/:/usr/lib64/qt5/bin/:$PATH
-    $ echo export PATH=/usr/lib64/openmpi/bin/:\$PATH | sudo tee -a ~/.bashrc
-    $ echo export $ LD_LIBRARY_PATH=/usr/lib64/openmpi/lib/:\$LD_LIBRARY_PATH | sudo tee -a ~/.bashrc
-    $ echo source /mnt/share/OpenFOAM-7/etc/bashrc | sudo tee -a ~/.bashrc
-    $ sudo ln -s /usr/lib64/libboost_thread-mt.so /usr/lib64/libboost_thread.so
-    $ source ~/.bashrc
-    $ cd /mnt/share/OpenFOAM-7
-    $ ./Allwmake -j
+$ sudo yum groupinstall -y 'Development Tools'
+$ sudo yum -y install devtoolset-8 gcc-c++ zlib-devel openmpi openmpi-devel
+$ cd /mnt/share
+$ wget -O - http://dl.openfoam.org/source/7 | tar xvz
+$ wget -O - http://dl.openfoam.org/third-party/7 | tar xvz
+$ mv OpenFOAM-7-version-7 OpenFOAM-7
+$ mv ThirdParty-7-version-7 ThirdParty-7
+$ export PATH=/usr/lib64/openmpi/bin/:/usr/lib64/qt5/bin/:$PATH
+$ echo export PATH=/usr/lib64/openmpi/bin/:\$PATH | sudo tee -a ~/.bashrc
+$ echo export $ LD_LIBRARY_PATH=/usr/lib64/openmpi/lib/:\$LD_LIBRARY_PATH | sudo tee -a ~/.bashrc
+$ echo source /mnt/share/OpenFOAM-7/etc/bashrc | sudo tee -a ~/.bashrc
+$ sudo ln -s /usr/lib64/libboost_thread-mt.so /usr/lib64/libboost_thread.so
+$ source ~/.bashrc
+$ cd /mnt/share/OpenFOAM-7
+$ ./Allwmake -j
 
 ```
 - Worker node
@@ -324,16 +324,16 @@ $ source ~/.bashrc
 On Headnode, run the following commands that will be needed to render the output using Paraview package.
 
 ```
-sudo yum install -y mesa-libGLU
-cd /mnt/share
-curl -d submit="Download" -d version="v4.4" -d type="binary" -d os="Linux" -d downloadFile="ParaView-4.4.0-Qt4-Linux-64bit.tar.gz" https://www.paraview.org/paraview-downloads/download.php > file.tar.gz
-tar -xf file.tar.gz
+$ sudo yum install -y mesa-libGLU
+$ cd /mnt/share
+$ curl -d submit="Download" -d version="v4.4" -d type="binary" -d os="Linux" -d downloadFile="ParaView-4.4.0-Qt4-Linux-64bit.tar.gz" https://www.paraview.org/paraview-downloads/download.php > file.tar.gz
+$ tar -xf file.tar.gz
 ```
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
-Run script ![](./scripts/motorbike_RDMA.tgz "") in /mnt/share/work in one of worker nodes
+Run <a href="./scripts/motorbike_RDMA.tgz" target="_blank">scripts</a> in /mnt/share/work in one of worker nodes
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -343,11 +343,11 @@ Connect to one of the worker nodes from headnode and execute the workload
 ```
 $ ssh worker_node_IP
 $ cd /mnt/share/work/
-$ ./Allrun 36
+$ ./Allrun 2
 ```
 
 ```
-$ ./Allrun 36
+$ ./Allrun 2
 $ Cleaning /mnt/share/work case
 $ Mesh Dimensions: (40 16 16)
 $ Cores:36: 6, 6, 1

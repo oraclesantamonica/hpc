@@ -333,7 +333,7 @@ $ tar -xf file.tar.gz
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
-Run <a href="HPC/scripts/motorbike_RDMA.tgz" target="_blank">scripts</a> in /mnt/share/work in one of worker nodes.
+Run <a href="~/scripts/motorbike_RDMA.tgz" target="_blank">scripts</a> in /mnt/share/work in one of worker nodes.
 Connect to one of the worker nodes from headnode and execute the workload
 
 ```

@@ -195,28 +195,28 @@ Return to the console logged in to the head node, and take the private IP addres
     - Headnode(local and share): select /mnt/share as the mount directory for the 500G partition and /mnt/local for the larger one.
 
         ```
-        $ sudo mkdir /mnt/local
-        $ sudo mount /dev/nvme0n1p1 /mnt/share
-        $ sudo chmod 777 /mnt/share
-        $ sudo mount /dev/nvme0n1p2 /mnt/local
-        $ sudo chmod 777 /mnt/local
+         sudo mkdir /mnt/local
+         sudo mount /dev/nvme0n1p1 /mnt/share
+         sudo chmod 777 /mnt/share
+         sudo mount /dev/nvme0n1p2 /mnt/local
+         sudo chmod 777 /mnt/local
      
         ```
 
      - Headnode(share):
 
         ```
-        $ sudo mkdir /mnt/share
-        $ sudo mount /dev/nvme0n1 /mnt/share
-        $ sudo chmod 777 /mnt/share
+         sudo mkdir /mnt/share
+         sudo mount /dev/nvme0n1 /mnt/share
+         sudo chmod 777 /mnt/share
         ```
       
     - Worker nodes: select /mnt/local as the mount directory of the whole drive.
 
         ```
-        $ sudo mkdir /mnt/local
-        $ sudo mount /dev/nvme0n1 /mnt/local
-        $ sudo chmod 777 /mnt/local
+         sudo mkdir /mnt/local
+         sudo mount /dev/nvme0n1 /mnt/local
+         sudo chmod 777 /mnt/local
         ```
 
 
@@ -232,25 +232,25 @@ Return to the console logged in to the head node, and take the private IP addres
 - Headnode. <br/>
 Headnode is in a public subnet, we will keep the firewall up and add an exception through
     ```
-    $ sudo firewall-cmd --permanent --zone=public --add-service=nfs
-    $ sudo firewall-cmd --reload
+     sudo firewall-cmd --permanent --zone=public --add-service=nfs
+     sudo firewall-cmd --reload
     ```
 
 Activate the nfs-server and make the directory
     ```
-    $ sudo yum -y install nfs-utils
-    $ sudo systemctl enable nfs-server.service
-    $ sudo systemctl start nfs-server.service
-    $ sudo mkdir /mnt/share
-    $ sudo chmod 777 /mnt/share
+     sudo yum -y install nfs-utils
+     sudo systemctl enable nfs-server.service
+     sudo systemctl start nfs-server.service
+     sudo mkdir /mnt/share
+     sudo chmod 777 /mnt/share
     ```
 <br/>
 Edit the file /etc/exports. Add the line /mnt/share 10.0.0.0/16
 
     ```
-    $ sudo vi /etc/exports
+     sudo vi /etc/exports
 
-    $ sudo exportfs -a  
+     sudo exportfs -a  
     ```
 
 - Worker node <br/>
@@ -259,10 +259,10 @@ On the worker nodes, since they are in a private subnet with security list restr
 To mount the drive, the private IP of the headnode will be required. You can find it in the instance details in the OCI console under instance details where the public IP is presented, or find it by running the command **ifconfig** on the headnode. It will probably be something like 10.0.0.2, 10.0.1.2 or 10.0.2.2 depending on the CIDR block of the public subnet.
 
 ```
-$ sudo systemctl stop firewalld
-$ sudo yum -y install nfs-utils
-$ sudo mkdir /mnt/share
-$ sudo mount <headnode-private-ip-address>:/mnt/share/mnt/share
+ sudo systemctl stop firewalld
+ sudo yum -y install nfs-utils
+ sudo mkdir /mnt/share
+ sudo mount <headnode-private-ip-address>:/mnt/share/mnt/share
 ```
 
 ### **STEP 6: Install OpenFOAM**
@@ -288,33 +288,33 @@ Install from sources, modify the path to the tarballs in the next commands. This
 
 
 ```
-$ sudo yum groupinstall -y 'Development Tools'
-$ sudo yum -y install devtoolset-8 gcc-c++ zlib-devel openmpi openmpi-devel
-$ cd /mnt/share
-$ wget -O - http://dl.openfoam.org/source/7 | tar xvz
-$ wget -O - http://dl.openfoam.org/third-party/7 | tar xvz
-$ mv OpenFOAM-7-version-7 OpenFOAM-7
-$ mv ThirdParty-7-version-7 ThirdParty-7
-$ export PATH=/usr/lib64/openmpi/bin/:/usr/lib64/qt5/bin/:$PATH
-$ echo export PATH=/usr/lib64/openmpi/bin/:\$PATH | sudo tee -a ~/.bashrc
-$ echo export $ LD_LIBRARY_PATH=/usr/lib64/openmpi/lib/:\$LD_LIBRARY_PATH | sudo tee -a ~/.bashrc
-$ echo source /mnt/share/OpenFOAM-7/etc/bashrc | sudo tee -a ~/.bashrc
-$ sudo ln -s /usr/lib64/libboost_thread-mt.so /usr/lib64/libboost_thread.so
-$ source ~/.bashrc
-$ cd /mnt/share/OpenFOAM-7
-$ ./Allwmake -j
+ sudo yum groupinstall -y 'Development Tools'
+ sudo yum -y install devtoolset-8 gcc-c++ zlib-devel openmpi openmpi-devel
+ cd /mnt/share
+ wget -O - http://dl.openfoam.org/source/7 | tar xvz
+ wget -O - http://dl.openfoam.org/third-party/7 | tar xvz
+ mv OpenFOAM-7-version-7 OpenFOAM-7
+ mv ThirdParty-7-version-7 ThirdParty-7
+ export PATH=/usr/lib64/openmpi/bin/:/usr/lib64/qt5/bin/:$PATH
+ echo export PATH=/usr/lib64/openmpi/bin/:\$PATH | sudo tee -a ~/.bashrc
+ echo export $ LD_LIBRARY_PATH=/usr/lib64/openmpi/lib/:\$LD_LIBRARY_PATH | sudo tee -a ~/.bashrc
+ echo source /mnt/share/OpenFOAM-7/etc/bashrc | sudo tee -a ~/.bashrc
+ sudo ln -s /usr/lib64/libboost_thread-mt.so /usr/lib64/libboost_thread.so
+ source ~/.bashrc
+ cd /mnt/share/OpenFOAM-7
+ ./Allwmake -j
 
 ```
 - Worker node
 ```
-$ sudo yum -y install openmpi openmpi-devel
-$ cd /mnt/share
-$ export PATH=/usr/lib64/openmpi/bin/:/usr/lib64/qt5/bin/:$PATH
-$ echo export PATH=/usr/lib64/openmpi/bin/:\$PATH | $ sudo tee -a ~/.bashrc
-$ echo export $ LD_LIBRARY_PATH=/usr/lib64/openmpi/lib/:\$LD_LIBRARY_PATH | sudo tee -a ~/.bashrc
-$ echo source /mnt/share/OpenFOAM-7/etc/bashrc | $ sudo tee -a ~/.bashrc
-$ sudo ln -s /usr/lib64/libboost_thread-mt.so /usr/lib64/libboost_thread.so
-$ source ~/.bashrc
+ sudo yum -y install openmpi openmpi-devel
+ cd /mnt/share
+ export PATH=/usr/lib64/openmpi/bin/:/usr/lib64/qt5/bin/:$PATH
+ echo export PATH=/usr/lib64/openmpi/bin/:\$PATH | $ sudo tee -a ~/.bashrc
+ echo export $ LD_LIBRARY_PATH=/usr/lib64/openmpi/lib/:\$LD_LIBRARY_PATH | sudo tee -a ~/.bashrc
+ echo source /mnt/share/OpenFOAM-7/etc/bashrc | $ sudo tee -a ~/.bashrc
+ sudo ln -s /usr/lib64/libboost_thread-mt.so /usr/lib64/libboost_thread.so
+ source ~/.bashrc
 
 ```
 
@@ -324,10 +324,10 @@ $ source ~/.bashrc
 On Headnode, run the following commands that will be needed to render the output using Paraview package.
 
 ```
-$ sudo yum install -y mesa-libGLU
-$ cd /mnt/share
-$ curl -d submit="Download" -d version="v4.4" -d type="binary" -d os="Linux" -d downloadFile="ParaView-4.4.0-Qt4-Linux-64bit.tar.gz" https://www.paraview.org/paraview-downloads/download.php > file.tar.gz
-$ tar -xf file.tar.gz
+ sudo yum install -y mesa-libGLU
+ cd /mnt/share
+ curl -d submit="Download" -d version="v4.4" -d type="binary" -d os="Linux" -d downloadFile="ParaView-4.4.0-Qt4-Linux-64bit.tar.gz" https://www.paraview.org/paraview-downloads/download.php > file.tar.gz
+ tar -xf file.tar.gz
 ```
 
 <p>&nbsp;</p>
@@ -337,13 +337,13 @@ Run <a href="../scripts/motorbike_RDMA.tgz" target="_blank">scripts</a> in /mnt/
 Connect to one of the worker nodes from headnode and execute the workload
 
 ```
-$ ssh worker_node_IP
-$ cd /mnt/share/work/
-$ ./Allrun 2
+ ssh worker_node_IP
+ cd /mnt/share/work/
+ ./Allrun 2
 ```
 
 ```
-$ ./Allrun 2
+ ./Allrun 2
 $ Cleaning /mnt/share/work case
 $ Mesh Dimensions: (40 16 16)
 $ Cores:36: 6, 6, 1
@@ -357,7 +357,7 @@ $ Running simpleFoam
 $ Running reconstructParMesh on /mnt/share/work
 $ Running reconstructPar on /mnt/share/work
 219.95
-$
+
 ```
 
 
@@ -380,7 +380,7 @@ OPTIONALLY, In case you are not allowed to open VNC port 5901 or due to security
 Create tunnel from your laptop/desktop using the following command from terminal window. Here communication for port 5901 will be made on ssh port 22 and the IP address 150.136.41.3 is the public IP address of bastion server.
 
 ```
-$ ssh -L 5901:localhost:5901 -i Dropbox/amar_priv_key -N -f -l opc 150.136.41.3
+ ssh -L 5901:localhost:5901 -i Dropbox/amar_priv_key -N -f -l opc 150.136.41.3
 ```
 
 Do not close the above ssh tunnel terminal window. Now initiate VNC session and this time instead of IP address use "localhost" on port 5901, even though this port is not opened in the security list of the subnet.
@@ -394,8 +394,8 @@ Do not close the above ssh tunnel terminal window. Now initiate VNC session and 
 Start the Paraview application from within the bastion server
 
 ```
-$ cd /mnt/gluster-share/ParaView-4.4.0-Qt4-Linux-64bit/bin/
-$ ./paraview
+ cd /mnt/gluster-share/ParaView-4.4.0-Qt4-Linux-64bit/bin/
+ ./paraview
 ```
 
 

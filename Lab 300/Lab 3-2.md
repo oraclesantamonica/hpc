@@ -262,7 +262,7 @@ To mount the drive, the private IP of the headnode will be required. You can fin
  sudo systemctl stop firewalld
  sudo yum -y install nfs-utils
  sudo mkdir /mnt/share
- sudo mount <headnode-private-ip-address>:/mnt/share/mnt/share
+ sudo mount <headnode-private-ip-address>:/mnt/share /mnt/share
 ```
 
 ### **STEP 6: Install OpenFOAM**
@@ -276,7 +276,7 @@ do
 done
 ```
 - Create a machinelist <br/>
-OpenFOAM on the headnode does not automatically know which compute nodes are available. You can create a machinefile at /mnt/share/machinelist.txt with the private IP address of all the nodes along with the number of CPUs available. The headnode should also be included. The format for the entries is private-ip-address cpu=number-of-coresf
+OpenFOAM on the headnode does not automatically know which compute nodes are available. You can create a machinefile at `/mnt/share/machinelist.txt with` the private IP address of all the nodes along with the number of CPUs available. The headnode should also be included. The format for the entries is `private-ip-address cpu=number-of-cores`
 
 ```
 10.0.0.2 cpu=1
@@ -330,6 +330,17 @@ On Headnode, run the following commands that will be needed to render the output
  tar -xf file.tar.gz
 ```
 
+On headnonde, run these commands in order to set up the VNC server
+```
+ sudo yum -y groupinstall 'Server with GUI'
+ sudo yum -y install tigervnc-server mesa-libGL
+ sudo mkdir /home/opc/.vnc/
+ sudo chown opc:opc /home/opc/.vnc
+ echo "HPC_oci1" | vncpasswd -f > /home/opc/.vnc/passwd
+ chown opc:opc /home/opc/.vnc/passwd
+ chmod 600 /home/opc/.vnc/passwd
+ /usr/bin/vncserver
+```
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 

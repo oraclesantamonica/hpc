@@ -241,7 +241,7 @@ cd /mnt/gluster-share/work/
 ```
 
 ```
-[opc@inst-quqyz-accurate-swan work]$ ./Allrun 36
+./Allrun 36
 Cleaning /mnt/gluster-share/work case
 Mesh Dimensions: (40 16 16)
 Cores:36: 6, 6, 1
@@ -278,7 +278,7 @@ Running reconstructPar on /mnt/gluster-share/work
 Create tunnel from your laptop/desktop using the following command from terminal window. Here communication for port 5901 will be made on ssh port 22 and the IP address 150.136.41.3 is the public IP address of bastion server.
 
 ```
-$ ssh -L 5901:localhost:5901 -i Dropbox/amar_priv_key -N -f -l opc 150.136.41.3
+ssh -L 5901:localhost:5901 -i Dropbox/amar_priv_key -N -f -l opc 150.136.41.3
 ```
 
 - Do not close the above ssh tunnel terminal window. Now initiate VNC session and this time instead of IP address use "localhost" on port 5901, even though this port is not opened in the security list of the subnet.
@@ -292,8 +292,8 @@ $ ssh -L 5901:localhost:5901 -i Dropbox/amar_priv_key -N -f -l opc 150.136.41.3
 - Start the Paraview application from within the bastion server
 
 ```
-[opc@accurate-swan-bastion ~]$ cd /mnt/gluster-share/ParaView-4.4.0-Qt4-Linux-64bit/bin/
-[opc@accurate-swan-bastion bin]$ ./paraview
+cd /mnt/gluster-share/ParaView-4.4.0-Qt4-Linux-64bit/bin/
+./paraview
 ```
 
 

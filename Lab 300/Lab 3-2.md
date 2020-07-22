@@ -343,10 +343,100 @@ On headnonde, run these commands in order to set up the VNC server
 ```
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-
 Download this zip with the <a href="../scripts/motorbike_RDMA.tgz" target="_blank">scripts</a> in /mnt/share/work in one of worker nodes. Unzip the file using `tar -xf motorbike_RDMA.tgz`
-Connect to one of the worker nodes from headnode and execute the workload
 
+Before we execute the workload we need to edit the allrun file in order to match the architecture that we have built. 
+First we will move the folder from the OpenFOAM installer folder
+```
+ model_drive=/mnt/share
+ sudo mkdir $model_drive/work
+ sudo chmod 777 $model_drive/work
+ cp -r $FOAM_TUTORIALS/incompressible/simpleFoam/motorBike $model_drive/work
+ cd /mnt/share/work/motorBike/system
+```
+Edit the file system/decomposeParDict and change this line numberOfSubdomains 6; to numberOfSubdomains 12; or how many processes you will need. Then in the hierarchicalCoeffs block, change the n from n (3 2 1); to n (4 3 1); If you multiply those 3 values, you should get the numberOfSubdomains
+
+For running with a configuration of 1 VM.Standard2.1 worker node:
+```
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  7
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      decomposeParDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+numberOfSubdomains 2;
+
+method          hierarchical;
+// method          ptscotch;
+
+simpleCoeffs
+{
+    n               (4 1 1);
+    delta           0.001;
+}
+
+hierarchicalCoeffs
+{
+    n               (2 1 1);
+    delta           0.001;
+    order           xyz;
+}
+
+manualCoeffs
+{
+    dataFile        "cellDecomposition";
+}
+
+
+// ************************************************************************* //
+```
+Next edit the Allrun file in /mnt/share/work/motorBike to look like this:
+```
+#!/bin/sh
+cd ${0%/*} || exit 1    # Run from this directory
+NP=$1
+install_drive=/mnt/share
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+# Copy motorbike surface from resources directory
+cp $FOAM_TUTORIALS/resources/geometry/motorBike.obj.gz constant/triSurface/
+cp $install_drive/machinelist.txt hostfile
+
+runApplication surfaceFeatures
+
+runApplication blockMesh
+
+runApplication decomposePar -copyZero
+echo "Running snappyHexMesh"
+mpirun -np $NP -machinefile hostfile snappyHexMesh -parallel -overwrite > log.snappyHexMesh
+ls -d processor* | xargs -I {} rm -rf ./{}/0
+ls -d processor* | xargs -I {} cp -r 0 ./{}/0
+echo "Running patchsummary"
+mpirun -np $NP -machinefile hostfile patchSummary -parallel > log.patchSummary
+echo "Running potentialFoam"
+mpirun -np $NP -machinefile hostfile potentialFoam -parallel > log.potentialFoam
+echo "Running simpleFoam"
+mpirun -np $NP -machinefile hostfile $(getApplication) -parallel > log.simpleFoam
+
+runApplication reconstructParMesh -constant
+runApplication reconstructPar -latestTime
+
+foamToVTK
+touch motorbike.foam
+```
+
+Make sure you are in the worker node and execute the workload: 
 ```
  ssh worker_node_IP
  cd /mnt/share/work/

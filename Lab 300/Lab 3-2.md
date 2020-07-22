@@ -145,7 +145,7 @@ Return to the console logged in to the head node, and take the private IP addres
     ![](./nat_gateway.png " ")
 
 ### **STEP 4: Mounting a drive**
-*Note: Only if the node shape has a NVMe attached (BM.HPC2.36 has one, not VM.Standard2.1), HPC machines have local NVMe storage but it is not mounted by default.*
+*Note: Only if the node shape has a NVMe attached (BM.HPC2.36 has one, not VM.Standard2.1), HPC machines have local NVMe storage but it is not mounted by default. Skip to Step 5 if using VM.Standard2.1*
 
 - SSH into your headnode and run the below commands
 
@@ -267,7 +267,7 @@ To mount the drive, the private IP of the headnode will be required. You can fin
 
 ### **STEP 6: Install OpenFOAM**
 - Connecting all worker nodes <br/>
-Each worker node needs to be able to talk to all the worker nodes. SSH communication works but most applications have issues if all the hosts are not in the known host file. To disable the known host check for nodes with address in the VCN, you can deactivate with the following commands. You may need to modify it slightly if your have different addresses in your subnets.
+Each worker node needs to be able to talk to all the worker nodes. SSH communication works but most applications have issues if all the hosts are not in the known host file. To disable the known host check for nodes with address in the VCN, you can deactivate with the following commands. You may need to modify it slightly if your have different addresses in your subnets. Put the following code block in a shell script and run the script. 
 ```
 for i in 0 1 2 3
 do
@@ -333,7 +333,7 @@ On Headnode, run the following commands that will be needed to render the output
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
-Run <a href="../scripts/motorbike_RDMA.tgz" target="_blank">scripts</a> in /mnt/share/work in one of worker nodes.
+Download this zip with the <a href="../scripts/motorbike_RDMA.tgz" target="_blank">scripts</a> in /mnt/share/work in one of worker nodes. Unzip the file using `tar -xf motorbike_RDMA.tgz`
 Connect to one of the worker nodes from headnode and execute the workload
 
 ```

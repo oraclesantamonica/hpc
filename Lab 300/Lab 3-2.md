@@ -235,34 +235,21 @@ Headnode is in a public subnet, we will keep the firewall up and add an exceptio
      sudo firewall-cmd --permanent --zone=public --add-service=nfs
      sudo firewall-cmd --reload
     ```
-
-Activate the nfs-server and make the directory
-    ```
-     sudo yum -y install nfs-utils
-     sudo systemctl enable nfs-server.service
-     sudo systemctl start nfs-server.service
-     sudo mkdir /mnt/share
-     sudo chmod 777 /mnt/share
-    ```
-<br/>
-Edit the file /etc/exports. Add the line /mnt/share 10.0.0.0/16
-
-    ```
-     sudo vi /etc/exports
-
-     sudo exportfs -a  
-    ```
+Click on the mount target that was created, then click on the export path, and then click on the mount commands and copy these commands that should look like this: 
+```
+ sudo yum install nfs-utils
+ sudo mkdir -p /mnt/share
+ sudo mount <fss-ip-address>:/<ExportPathName> /mnt/share
+```
 
 - Worker node <br/>
-On the worker nodes, since they are in a private subnet with security list restricting access, we can disable the firewall altogether. Then, we can install nfs-utils tools and mount the drive.
-
-To mount the drive, the private IP of the headnode will be required. You can find it in the instance details in the OCI console under instance details where the public IP is presented, or find it by running the command **ifconfig** on the headnode. It will probably be something like 10.0.0.2, 10.0.1.2 or 10.0.2.2 depending on the CIDR block of the public subnet.
+On the worker nodes, since they are in a private subnet with security list restricting access, we can disable the firewall altogether. Then, we can install nfs-utils tools and mount the nfs just like we did above.
 
 ```
  sudo systemctl stop firewalld
  sudo yum -y install nfs-utils
- sudo mkdir /mnt/share
- sudo mount <headnode-private-ip-address>:/mnt/share /mnt/share
+ sudo mkdir  -p /mnt/share
+ sudo mount <fss-ip-address>:/<ExportPathName> /mnt/share
 ```
 
 ### **STEP 6: Install OpenFOAM**

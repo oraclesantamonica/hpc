@@ -41,8 +41,8 @@ Before you begin using this lab, make sure to have access to the following:
 
 
 
+## Steps
 
-# Steps:
 ### **STEP 1: Launch marketplace image**
 - Before user launches the marketplace image, check for the Availability domain where 2 or more HPC nodes with shape BM.HPC2.36 are available. Goto Menu -> Governance -> Limits, Quotas and Usage
 

@@ -313,22 +313,22 @@ Install from sources, modify the path to the tarballs in the next commands. This
 On Headnode, run the following commands that will be needed to render the output using Paraview package.
 
 ```
- sudo yum install -y mesa-libGLU
- cd /mnt/share
- curl -d submit="Download" -d version="v4.4" -d type="binary" -d os="Linux" -d downloadFile="ParaView-4.4.0-Qt4-Linux-64bit.tar.gz" https://www.paraview.org/paraview-downloads/download.php > file.tar.gz
- tar -xf file.tar.gz
+ $ sudo yum install -y mesa-libGLU
+ $ cd /mnt/share
+ $ curl -d submit="Download" -d version="v4.4" -d type="binary" -d os="Linux" -d downloadFile="ParaView-4.4.0-Qt4-Linux-64bit.tar.gz" $ https://www.paraview.org/paraview-downloads/download.php > file.tar.gz
+ $ tar -xf file.tar.gz
 ```
 
 On headnonde, run these commands in order to set up the VNC server
 ```
- sudo yum -y groupinstall 'Server with GUI'
- sudo yum -y install tigervnc-server mesa-libGL
- sudo mkdir /home/opc/.vnc/
- sudo chown opc:opc /home/opc/.vnc
- echo "HPC_oci1" | vncpasswd -f > /home/opc/.vnc/passwd
- chown opc:opc /home/opc/.vnc/passwd
- chmod 600 /home/opc/.vnc/passwd
- /usr/bin/vncserver
+ $ sudo yum -y groupinstall 'Server with GUI'
+ $ sudo yum -y install tigervnc-server mesa-libGL
+ $ sudo mkdir /home/opc/.vnc/
+ $ sudo chown opc:opc /home/opc/.vnc
+ $ echo "HPC_oci1" | vncpasswd -f > /home/opc/.vnc/passwd
+ $ chown opc:opc /home/opc/.vnc/passwd
+ $ chmod 600 /home/opc/.vnc/passwd
+ $ /usr/bin/vncserver
 ```
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -337,11 +337,11 @@ Download this zip with the <a href="../scripts/motorbike_RDMA.tgz" target="_blan
 Before we execute the workload we need to edit the allrun file in order to match the architecture that we have built. 
 First we will move the folder from the OpenFOAM installer folder
 ```
- model_drive=/mnt/share
- sudo mkdir $model_drive/work
- sudo chmod 777 $model_drive/work
- cp -r $FOAM_TUTORIALS/incompressible/simpleFoam/motorBike $model_drive/work
- cd /mnt/share/work/motorBike/system
+ $ model_drive=/mnt/share
+ $ sudo mkdir $model_drive/work
+ $ sudo chmod 777 $model_drive/work
+ $ cp -r $FOAM_TUTORIALS/incompressible/simpleFoam/motorBike $model_drive/work
+ $ cd /mnt/share/work/motorBike/system
 ```
 Edit the file system/decomposeParDict and change this line numberOfSubdomains 6; to numberOfSubdomains 12; or how many processes you will need. Then in the hierarchicalCoeffs block, change the n from n (3 2 1); to n (4 3 1); If you multiply those 3 values, you should get the numberOfSubdomains
 
@@ -427,13 +427,13 @@ touch motorbike.foam
 
 Make sure you are in the worker node and execute the workload: 
 ```
- ssh worker_node_IP
- cd /mnt/share/work/
- ./Allrun 2
+ $ ssh worker_node_IP
+ $ cd /mnt/share/work/
+ $ ./Allrun 2
 ```
 
 ```
- ./Allrun 2
+$ ./Allrun 2
 $ Cleaning /mnt/share/work case
 $ Mesh Dimensions: (40 16 16)
 $ Cores:36: 6, 6, 1
@@ -484,8 +484,8 @@ Do not close the above ssh tunnel terminal window. Now initiate VNC session and 
 Start the Paraview application from within the bastion server
 
 ```
- cd /mnt/gluster-share/ParaView-4.4.0-Qt4-Linux-64bit/bin/
- ./paraview
+ $ cd /mnt/gluster-share/ParaView-4.4.0-Qt4-Linux-64bit/bin/
+ $ ./paraview
 ```
 
 
@@ -512,7 +512,7 @@ An image like below will be rendered on the screen. Based on some display settin
 <p>&nbsp;</p>
 
 
-This completes the demo for running OpenFoam application on HPC compute instances.
+All Done! This completes the demo for running OpenFoam application on HPC compute instances.
 
 <p>&nbsp;</p>
 

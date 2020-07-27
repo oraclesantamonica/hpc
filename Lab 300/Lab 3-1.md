@@ -24,10 +24,6 @@ Before you begin using this lab, make sure to have access to the following:
 5. Access to marketplace image "CFD Ready Cluster". The version of marketplace image used in this DEMO is (Version: 20200625). 
 
 
-
-
-# Basics of HPC (optional): 
-
 ###  What is OpenFoam:
    Computational Fluid Dynamics (CFD) is the simulation of fluid motion and heat transfer using numerical analysis. CFD software, such as OpenFOAM, can serve as a powerful tool for many engineering industries to improve designs, visualize impact, and detect inefficiencies in a system. However, the computational power required to process a simulation can be very intensive. Super-computers and HPC clusters are often used to execute large and complex models within a reasonable timeframe. 
    In this lab, you will compute and render the aerodynamic model of a motorcycle using an open-source CFD software, OpenFOAM, within an Oracle HPC cluster 

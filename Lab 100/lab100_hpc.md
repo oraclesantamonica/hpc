@@ -19,35 +19,35 @@ As a Developer or Data Engineer,
 ## Steps
 
 ### **STEP 1: Navigate to the OCI Marketplace**
-1. Click the Hamburger Menu (≡) on the top left corner.
+- Click the Hamburger Menu (≡) on the top left corner.
  <img src="img/click_hamburger.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
-2. Scroll down and click Marketplace.
+- Scroll down and click Marketplace.
 <img src="img/click_marketplace.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
-3. Search the marketplace for **HPC** and select HPC Cluster.
+- Search the marketplace for **HPC** and select HPC Cluster.
 <img src="img/marketplace.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
 
-4. Review the and accept the *Oracle Standard Terms and Restrictions* and
+- Review the and accept the *Oracle Standard Terms and Restrictions* and
 click **Launch Stack**.
 <img src="img/launch_stack.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
 
 ### **STEP 2: Configure the HPC Stack**
 After launching the stack you'll be redirected to the Create Stack Wizard where you'll fill in the Stack information.
 
-1. In **Stack Information** give the Stack a name and *(optionally)* specify to deploy in a compartment that you are currently not in.
+- In **Stack Information** give the Stack a name and *(optionally)* specify to deploy in a compartment that you are currently not in.
 <img src="img/stack_p1.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
 
-2. Select the desired **AD** for the compute shapes and the bastion.
+- Select the desired **AD** for the compute shapes and the bastion.
 
-3. Copy-paste your public **ssh key**
+- Copy-paste your public **ssh key**
 <img src="img/stack_p2_1.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
-4. Type in the number of **Compute Instances** for the cluster
+- Type in the number of **Compute Instances** for the cluster
 <img src="img/stack_p2_2.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
-5. Under **Network Options** leave the defaults
+- Under **Network Options** leave the defaults
 <img src="img/stack_p2_3.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
 
-6. Click **Next** to review the configuration.
+- Click **Next** to review the configuration.
 <img src="img/stack_p3.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
-7. Click **Create**
+- Click **Create**
 
 **Note:** It will take approximately 15 minutes to provision the Stack.
 

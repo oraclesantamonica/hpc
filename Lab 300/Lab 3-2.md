@@ -116,7 +116,7 @@ _Note: For this lab we will be utilizing only the basic VM.Standard2.1 shape, bu
 
     $ ssh-keygen
     ```
-    _Note: Do not change the ssh key file location (/home/opc/.ssh/id_rsa) and hit enter when asked about a passphrase (twice)._
+    *Note: Do not change the ssh key file location (/home/opc/.ssh/id_rsa) and hit enter when asked about a passphrase (twice)*.
 
     - Run and Copy the whole string, which will be used in creating the worker node
 

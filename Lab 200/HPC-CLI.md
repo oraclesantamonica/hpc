@@ -30,7 +30,7 @@ The OCI user account you use in `ocihpc` should have the necessary policies conf
 
 ### **STEP 1: Installing ocihpc**
 
-#### Installing ocihpc on macOS/Linux####
+#### Installing ocihpc on macOS/Linux
 
 - Download the latest release with the following command and extract it:
 ```sh

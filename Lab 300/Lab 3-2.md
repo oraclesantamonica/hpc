@@ -70,13 +70,13 @@ Scroll to the bottom and click Create VCN
 
 #### Create Internet Gateway ####
 
-- click on hpc_vcn you created and on the **_Resources_** menu on the left side of the page, select **_Internet Gateway_**, create Internet Gateway.
+- click on `hpc_vcn` you created and on the **Resources** menu on the left side of the page, select **Internet Gateway**, create Internet Gateway.
 ![](./create_IG.png " ")
 ![](./create_IG_content.png " ")
 
 *Note: That will create the internet gateway, and it will need to be associated with a route table. In this case, since the Default Route Table will be used for the public subnet, the internet gateway should be associated with that route table.*
 
-- Add Route Rules to Route Table. On the **_Resources_** menu on the left side of the page, select **_Default Route Table for hpc_vcn_**, click **_Add Route Rules_** 
+- Add Route Rules to Route Table. On the **Resources** menu on the left side of the page, select **Default Route Table for `hpc_vcn`**, click **Add Route Rules** 
     - Target Type: Internet Gateway
     - Destination CIDR Block: 0.0.0.0/0
     - Target Internet Gateway in compartment: Internet Gateway you created
@@ -89,7 +89,7 @@ Scroll to the bottom and click Create VCN
 
 We will create two nodes for this lab, the **Headnode** for the cluster on the public subnet, and **a worker compute node** in the private subnet. In order to access the worker nodes, we will first create the headnode, then generate a ssh key on the headnode, and use that public key when creating the worker node.
 
-_Note: For this lab we will be utilizing only the basic VM.Standard2.1 shape, but for an actual deployment a larger shape like BM.HPC2.36 would be appropriate. Some high performance shapes are only available in specific Regions and Availability Domains._
+Note: For this lab we will be utilizing only the basic VM.Standard2.1 shape, but for an actual deployment a larger shape like BM.HPC2.36 would be appropriate. Some high performance shapes are only available in specific Regions and Availability Domains.
 
 
 #### Create Headnode ####
@@ -116,7 +116,7 @@ _Note: For this lab we will be utilizing only the basic VM.Standard2.1 shape, bu
 
     $ ssh-keygen
     ```
-    *Note: Do not change the ssh key file location (/home/opc/.ssh/id_rsa) and hit enter when asked about a passphrase (twice)*.
+    Note: Do not change the ssh key file location (/home/opc/.ssh/id_rsa) and hit enter when asked about a passphrase (twice).
 
     - Run and Copy the whole string, which will be used in creating the worker node
 
@@ -145,24 +145,24 @@ Return to the console logged in to the head node, and take the private IP addres
 
 ### **STEP 3: Setup NAT Gateway**
 
-***worker*** _node only_<br/>
+**worker node only <br/>
 
-- Select worker node and click on **_Attached VNICs_** in the **_resources_** menu on the left
-- Select **_Edit VNIC_**
-- Uncheck **_Skip Source/ Destination Check_** if it is checked and click **_Update VNICs_**
+- Select worker node and click on **Attached VNICs** in the **resources** menu on the left
+- Select **Edit VNIC**
+- Uncheck **Skip Source/ Destination Check** if it is checked and click **Update VNICs**
     ![](./nat_gateway.png " ")
 
 ### **STEP 4: Mounting a drive**
-*Note: Only if the node shape has a NVMe attached (BM.HPC2.36 has one, not VM.Standard2.1), HPC machines have local NVMe storage but it is not mounted by default. Skip to Step 5 if using VM.Standard2.1*
+Note: Only if the node shape has a NVMe attached (BM.HPC2.36 has one, not VM.Standard2.1), HPC machines have local NVMe storage but it is not mounted by default. Skip to Step 5 if using VM.Standard2.1
 
 - SSH into your headnode and run the below commands
 
     ```
      $ lsblk
     ```
-    *The drive should be listed with the NAME on the left (Probably nvme0n1, if it is different, change it in the next commands)*
+    The drive should be listed with the NAME on the left (Probably nvme0n1, if it is different, change it in the next commands)
 
-** The headnode will have the shared drive with the installation and the model. This will be shared between all the different worker nodes. Each worker node will also mount the drive to be running locally on a NVMe drive. In this example the share directory will be 500 GB but feel free to change that. **
+ The headnode will have the shared drive with the installation and the model. This will be shared between all the different worker nodes. Each worker node will also mount the drive to be running locally on a NVMe drive. In this example the share directory will be 500 GB but feel free to change that. 
 
 - Partition the drive on the worker node (optional)
 

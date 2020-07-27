@@ -25,101 +25,103 @@ As a Developer or Data Engineer,
 
 The OCI user account you use in `ocihpc` should have the necessary policies configured for OCI Resource Manager. Please check [this link](https://docs.cloud.oracle.com/en-us/iaas/Content/Identity/Tasks/managingstacksandjobs.htm) for information on required policies.
 
-### Installing ocihpc
 
-#### Installing ocihpc on macOS/Linux
+## Steps
 
-1. Download the latest release with the following command and extract it:
+### **STEP 1: Installing ocihpc**
+
+#### Installing ocihpc on macOS/Linux####
+
+- Download the latest release with the following command and extract it:
 ```sh
 curl -LO https://github.com/oracle-quickstart/oci-ocihpc/releases/download/v1.0.0/ocihpc_v1.0.0_darwin_x86_64.tar.gz
 ```
 
-2. Make the ocihpc binary executable.
+- Make the ocihpc binary executable.
 ```sh
 chmod +x ./ocihpc 
 ```
 
-3. Move the ocihpc binary to your PATH.
+- Move the ocihpc binary to your PATH.
 ```sh
 sudo mv ./ocihpc /usr/local/bin/ocihpc 
 ```
 
-4. Test that it works.
+- Test that it works.
 ```sh
 ocihpc version 
 ```
 
-#### Installing ocihpc on Windows
+### **STEP 2: Installing ocihpc on Windows**
 
+- Download the latest release from [this link](https://github.com/oracle-quickstart/oci-ocihpc/releases/download/v1.0.0/ocihpc_v1.0.0_windows_x86_64.zip) and extract it.
 
-1. Download the latest release from [this link](https://github.com/oracle-quickstart/oci-ocihpc/releases/download/v1.0.0/ocihpc_v1.0.0_windows_x86_64.zip) and extract it.
+- Add the ocihpc binary to your PATH.
 
-2. Add the ocihpc binary to your PATH.
+- Test that it works.
+  ```sh
+  ocihpc.exe version 
+  ```
 
-3. Test that it works.
-```sh
-ocihpc.exe version 
-```
+### **STEP 3: Creating an ssh keypair**
 
-### Creating an ssh keypair
-
-#### Creating an SSH Key Pair on the Command Line
+#### Creating an SSH Key Pair on the Command Line####
 Please refer to [this link](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Tasks/creatingkeys.htm) if you are using windows.
 
-1. Open a shell or terminal for entering the commands.
+- Open a shell or terminal for entering the commands.
 
 
-2. Navigate to your .oci folder
-```sh
-cd Users/enjli/.ssh
-```
+- Navigate to your .oci folder
+  ```sh
+  cd Users/enjli/.ssh
+  ```
 
-3. If you haven't already created the folder, create a .ssh directory to store the credentials:
-```sh
-mkdir Users/enjli/.ssh
-```
+- If you haven't already created the folder, create a .ssh directory to store the credentials:
+  ```sh
+  mkdir Users/enjli/.ssh
+  ```
 
-3. If you don't see any id_rsa key pairs in the folder, enter the following command and provide a name and passphrase when prompted. The keys will be created with the default values: RSA keys of 2048 bits.
+- If you don't see any id_rsa key pairs in the folder, enter the following command and provide a name and passphrase when prompted. The keys will be created with the default values: RSA keys of 2048 bits.
 
-```sh 
-ssh-keygen
-``` 
+  ```sh 
+  ssh-keygen
+  ``` 
 
 
+### **STEP 4: Generate an API Signing Key**
 
-### Generate an API Signing Key
 Your API requests will be signed with your private key, and Oracle will use the public key to verify the authenticity of the request.
 Please refer to [this link](https://docs.cloud.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#Other) if you are using windows.
 
 
-1. If you haven't already, create a .oci directory to store the credentials:
-```sh
-mkdir Users/enjli/.oci
-```
+- If you haven't already, create a .oci directory to store the credentials:
+  ```sh
+  $ mkdir Users/enjli/.oci
+  ```
 
-2. Generate the private key with  following commands.
-```sh
-openssl genrsa -out ~/.oci/oci_api_key.pem 2048
-```
-3. Ensure that only you can read the private key file:
-```sh
-chmod go-rwx ~/.oci/oci_api_key.pem
-```
+- Generate the private key with  following commands.
+  ```sh
+  $ openssl genrsa -out ~/.oci/oci_api_key.pem 2048
+  ```
+- Ensure that only you can read the private key file:
+  ```sh
+  $ chmod go-rwx ~/.oci/oci_api_key.pem
+  ```
 
-4. Generate the public key:
-```sh
-openssl rsa -pubout -in ~/.oci/oci_api_key.pem -out ~/.oci/oci_api_key_public.pem
-```
+- Generate the public key:
+  ```sh
+  $ openssl rsa -pubout -in ~/.oci/oci_api_key.pem -out ~/.oci/oci_api_key_public.pem
+  ```
 
-### Add public key to Oracle Cloud Infrastructure
+### **STEP 5: Add public key to Oracle Cloud Infrastructure**
 
 Now that you have a private / public key combo , you must add it to OCI Console under user setting:
 
-1. Navigate to your .oci folder containing **oci_api_key_public.pem**. Copy the public key.
+- Navigate to your .oci folder containing **oci_api_key_public.pem**. Copy the public key.
 
-2. Login to your OCI console and click on Menu and select Identity and Users. Select a User and navigate to User Detail page.
+- Login to your OCI console and click on Menu and select Identity and Users. Select a User and navigate to User Detail page.
 
-3. Click on Add Public Key under API Keys section.
+- Click on Add Public Key under API Keys section.
 
 ![](./ResourcesMenu.png " ")
 
@@ -130,9 +132,8 @@ Now that you have a private / public key combo , you must add it to OCI Console 
 ![](./AddPublicKey.png " ")
 
 
-## Steps
+### **STEP 6: Configure**
 
-### 1 - Configure
 This step describes the required configuration for the CLI and includes optional configurations that enable you to extend CLI functionality.
 
 Before using the CLI, you have to create a config file in your .oci folder that contains the required credentials for working with your Oracle Cloud Infrastructure account. You can create this file using a setup dialog or manually, using a text editor.
@@ -155,8 +156,8 @@ In order to create your config file, you will need:
 
 
 
+### **STEP 7: List**
 
-### 2 - List
 You can get the list of available stacks by running `ocihpc list`.
 
 Example:
@@ -171,7 +172,8 @@ Gromacs
 OpenFOAM
 ```
 
-### 3 - Initialize
+### **STEP 8: Initialize**
+
 Create a folder that you will use as the deployment source.
 
 IMPORTANT: Use a different folder per stack. Do not initialize more than one stack in the same folder. Otherwise, the tool will overwrite the previous one.
@@ -191,7 +193,8 @@ ClusterNetwork downloaded to /Users/enjli/ocihpc-test/
 IMPORTANT: Edit the contents of the /Users/enjli/ocihpc-test/config.json file before running ocihpc deploy command
 ```
 
-### 4 - Deploy
+### **STEP 9: Deploy**
+
 Before deploying, you need to change the values in `config.json` file. The variables depend on the stack you deploy. An example `config.json` for Cluster Network would look like this:
 
 ```json
@@ -247,7 +250,9 @@ Deploying ClusterNetwork-ocihpc-test-7355 [0min 35sec]
 ...
 ```
 
-### 5 - Connect
+
+### **STEP 9: Connect**
+
 When deployment is completed, you will see the the bastion/headnode IP that you can connect to:
 
 ```
@@ -258,7 +263,7 @@ You can connect to your head node using the command: ssh opc@$123.221.10.8 -i <l
 
 You can also get the connection details by running `ocihpc get ip` command.
 
-### 6 - Manage
+### **STEP 9: Manage**
 In addition, you can use cli commands to easily manage and keep tracks of your resources:
 
 - To generate a list of all the stacks deployed in a specific compartment: `oci resource-manager job list -c [OCID OF COMPARTMENT]`
@@ -272,7 +277,7 @@ In addition, you can use cli commands to easily manage and keep tracks of your r
 - To move a Stack and it's associated Jobs into a different compartment: `oci resource-manager stack change-compartment -c [OCID OF NEW COMPARTMENT] --stack-id [OCID OF THE STACK]`
 
 
-### 7 - Delete
+### **STEP 9: Delete**
 When you are done with your deployment, you can delete it by changing to the stack folder and running `ocihpc delete --stack <stack name>`.
 
 Example:
@@ -286,3 +291,7 @@ Deleting ClusterNetwork-ocihpc-test-7355 [0min 35sec]
 
 Succesfully deleted ClusterNetwork-ocihpc-test-7355
 ```
+
+All Done! You have successfully deployed your first High Performance Compute Instanceinstance and it should be ready for use in a few minutes.
+
+These are detailed information about managing High Performance Compute Instance. For a complete command reference,check out OCI documentation [here](https://docs.cloud.oracle.com/en-us/iaas/Content/Compute/Tasks/managingclusternetworks.htm?Highlight=hpc).

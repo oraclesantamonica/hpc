@@ -119,7 +119,7 @@ $ openssl rsa -pubout -in ~/.oci/oci_api_key.pem -out ~/.oci/oci_api_key_public.
 
 Now that you have a private / public key combo , you must add it to OCI console under user setting:
 
-- Navigate to your .oci folder containing *oci_api_key_public.pem*. Copy the public key.
+- Navigate to your .oci folder containing oci_api_key_public.pem,  copy the public key.
 
 - Login to your OCI console and click on Menu and select Identity and Users. Select a User and navigate to User Detail page.
 

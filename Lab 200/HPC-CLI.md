@@ -73,18 +73,18 @@ Please refer to [this link](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG
 
 - Navigate to your .oci folder
   ```sh
-  cd Users/enjli/.ssh
+  $ cd Users/enjli/.ssh
   ```
 
 - If you haven't already created the folder, create a .ssh directory to store the credentials:
   ```sh
-  mkdir Users/enjli/.ssh
+  $ mkdir Users/enjli/.ssh
   ```
 
 - If you don't see any id_rsa key pairs in the folder, enter the following command and provide a name and passphrase when prompted. The keys will be created with the default values: RSA keys of 2048 bits.
 
   ```sh 
-  ssh-keygen
+  $ ssh-keygen
   ``` 
 
 
@@ -115,7 +115,7 @@ Please refer to [this link](https://docs.cloud.oracle.com/en-us/iaas/Content/API
 
 ### **STEP 5: Add public key to Oracle Cloud Infrastructure**
 
-Now that you have a private / public key combo , you must add it to OCI Console under user setting:
+Now that you have a private / public key combo , you must add it to OCI console under user setting:
 
 - Navigate to your .oci folder containing **oci_api_key_public.pem**. Copy the public key.
 
@@ -292,6 +292,6 @@ Deleting ClusterNetwork-ocihpc-test-7355 [0min 35sec]
 Succesfully deleted ClusterNetwork-ocihpc-test-7355
 ```
 
-All Done! You have successfully deployed your first High Performance Compute Instanceinstance and it should be ready for use in a few minutes.
+All Done! You have successfully deployed your first High Performance Compute Instanceinstance using OCI CLI tool.
 
 These are detailed information about managing High Performance Compute Instance. For a complete command reference,check out OCI documentation [here](https://docs.cloud.oracle.com/en-us/iaas/Content/Compute/Tasks/managingclusternetworks.htm?Highlight=hpc).

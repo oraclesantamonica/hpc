@@ -34,22 +34,22 @@ The OCI user account you use in `ocihpc` should have the necessary policies conf
 
 - Download the latest release with the following command and extract it:
 ```sh
-curl -LO https://github.com/oracle-quickstart/oci-ocihpc/releases/download/v1.0.0/ocihpc_v1.0.0_darwin_x86_64.tar.gz
+$ curl -LO https://github.com/oracle-quickstart/oci-ocihpc/releases/download/v1.0.0/ocihpc_v1.0.0_darwin_x86_64.tar.gz
 ```
 
 - Make the ocihpc binary executable.
 ```sh
-chmod +x ./ocihpc 
+$ chmod +x ./ocihpc 
 ```
 
 - Move the ocihpc binary to your PATH.
 ```sh
-sudo mv ./ocihpc /usr/local/bin/ocihpc 
+$ sudo mv ./ocihpc /usr/local/bin/ocihpc 
 ```
 
 - Test that it works.
 ```sh
-ocihpc version 
+$ ocihpc version 
 ```
 
 ### **STEP 2: Installing ocihpc on Windows**
@@ -59,9 +59,9 @@ ocihpc version
 - Add the ocihpc binary to your PATH.
 
 - Test that it works.
-  ```sh
-  $ ocihpc.exe version 
-  ```
+```sh
+$ ocihpc.exe version 
+```
 
 ### **STEP 3: Creating an ssh keypair**
 
@@ -72,21 +72,21 @@ Please refer to [this link](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG
 
 
 - Navigate to your .oci folder
-  ```sh
-  $ cd Users/enjli/.ssh
-  ```
+```sh
+$ cd Users/enjli/.ssh
+```
 
 - If you haven't already created the folder, create a .ssh directory to store the credentials:
-  ```sh
-  $ mkdir Users/enjli/.ssh
-  ```
+```sh
+$ mkdir Users/enjli/.ssh
+```
 
 - If you don't see any id_rsa key pairs in the folder, enter the following command and provide a name and passphrase when prompted. The keys will be created with the default values: RSA keys of 2048 bits.
 
 
-  ```sh
-  $ ssh-keygen
-  ```
+```sh
+$ ssh-keygen
+```
 
 
 
@@ -97,23 +97,23 @@ Please refer to [this link](https://docs.cloud.oracle.com/en-us/iaas/Content/API
 
 
 - If you haven't already, create a .oci directory to store the credentials:
-  ```sh
-  $ mkdir Users/enjli/.oci
-  ```
+```sh
+$ mkdir Users/enjli/.oci
+```
 
 - Generate the private key with  following commands.
-  ```sh
-  $ openssl genrsa -out ~/.oci/oci_api_key.pem 2048
-  ```
+```sh
+$ openssl genrsa -out ~/.oci/oci_api_key.pem 2048
+```
 - Ensure that only you can read the private key file:
-  ```sh
-  $ chmod go-rwx ~/.oci/oci_api_key.pem
-  ```
+```sh
+$ chmod go-rwx ~/.oci/oci_api_key.pem
+```
 
 - Generate the public key:
-  ```sh
-  $ openssl rsa -pubout -in ~/.oci/oci_api_key.pem -out ~/.oci/oci_api_key_public.pem
-  ```
+```sh
+$ openssl rsa -pubout -in ~/.oci/oci_api_key.pem -out ~/.oci/oci_api_key_public.pem
+```
 
 ### **STEP 5: Add public key to Oracle Cloud Infrastructure**
 

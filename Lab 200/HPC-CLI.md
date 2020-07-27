@@ -83,9 +83,11 @@ Please refer to [this link](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG
 
 - If you don't see any id_rsa key pairs in the folder, enter the following command and provide a name and passphrase when prompted. The keys will be created with the default values: RSA keys of 2048 bits.
 
-  ```sh 
+
+  ```sh
   $ ssh-keygen
-  ``` 
+  ```
+
 
 
 ### **STEP 4: Generate an API Signing Key**

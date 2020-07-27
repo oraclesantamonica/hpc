@@ -143,7 +143,8 @@ Before using the CLI, you have to create a config file in your .oci folder that 
 Run `ocihpc configure` to check if you have a valid configuration to access OCI. The tool will walk you through creating a configuration.
 
 You will be notified where your config file is written to:
-```Configuration file saved to: /Users/enjli/.oci/config```
+
+*Configuration file saved to: /Users/enjli/.oci/config*
 
 An example `config` file would look like this:
 

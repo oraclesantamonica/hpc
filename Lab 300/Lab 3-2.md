@@ -74,7 +74,7 @@ Scroll to the bottom and click Create VCN
 ![](./create_IG.png " ")
 ![](./create_IG_content.png " ")
 
-*Note: That will create the internet gateway, and it will need to be associated with a route table. In this case, since the Default Route Table will be used for the public subnet, the internet gateway should be associated with that route table.*
+Note: That will create the internet gateway, and it will need to be associated with a route table. In this case, since the Default Route Table will be used for the public subnet, the internet gateway should be associated with that route table.
 
 - Add Route Rules to Route Table. On the **Resources** menu on the left side of the page, select **Default Route Table for `hpc_vcn`**, click **Add Route Rules** 
     - Target Type: Internet Gateway

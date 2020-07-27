@@ -60,12 +60,12 @@ ocihpc version
 
 - Test that it works.
   ```sh
-  ocihpc.exe version 
+  $ ocihpc.exe version 
   ```
 
 ### **STEP 3: Creating an ssh keypair**
 
-#### Creating an SSH Key Pair on the Command Line####
+#### Creating an SSH Key Pair on the Command Line
 Please refer to [this link](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Tasks/creatingkeys.htm) if you are using windows.
 
 - Open a shell or terminal for entering the commands.
@@ -190,8 +190,8 @@ Downloading stack: ClusterNetwork
 
 ClusterNetwork downloaded to /Users/enjli/ocihpc-test/
 
-IMPORTANT: Edit the contents of the /Users/enjli/ocihpc-test/config.json file before running ocihpc deploy command
 ```
+**IMPORTANT**: Edit the contents of the /Users/enjli/ocihpc-test/config.json file before running ocihpc deploy command
 
 ### **STEP 9: Deploy**
 
@@ -226,29 +226,29 @@ Bastion shape should be filled in already - VM.Standard2.1
 - Node count - for the purposes of this lab, we will go with 2 so as to use up all HPC resources
 - Our public ssh key 
 
+**notes**
+- After you change the values in `config.json`, you can deploy the stack with `ocihpc deploy <arguments>`. This command will create a Stack on Oracle Cloud Resource Manager and deploy the stack using it.
 
-After you change the values in `config.json`, you can deploy the stack with `ocihpc deploy <arguments>`. This command will create a Stack on Oracle Cloud Resource Manager and deploy the stack using it.
+- For supported stacks, you can set the number of nodes you want to deploy by adding it to the `ocihpc deploy` command. If the stack does not support it or if you don't provide a value, the tool will deploy with the default numbers. 
 
-For supported stacks, you can set the number of nodes you want to deploy by adding it to the `ocihpc deploy` command. If the stack does not support it or if you don't provide a value, the tool will deploy with the default numbers. 
+- For example, the following command will deploy a Cluster Network with 5 nodes:
 
-For example, the following command will deploy a Cluster Network with 5 nodes:
+  ```
+  $ ocihpc deploy --stack ClusterNetwork --node-count 5 --region us-ashburn-1 --compartment-id ocid1.compartment.oc1..6zvhnus3q
+  ```
 
-```
-$ ocihpc deploy --stack ClusterNetwork --node-count 5 --region us-ashburn-1 --compartment-id ocid1.compartment.oc1..6zvhnus3q
-```
+- The tool will generate a deployment name that consists of `<stack name>-<current directory>-<random-number>`.
 
-INFO: The tool will generate a deployment name that consists of `<stack name>-<current directory>-<random-number>`.
+  Example:
 
-Example:
+  ```
+  $ ocihpc deploy --stack ClusterNetwork --node-count 5 --region us-ashburn-1 --compartment-id ocid1.compartment.oc1..6zvhnus3q
 
-```
-$ ocihpc deploy --stack ClusterNetwork --node-count 5 --region us-ashburn-1 --compartment-id ocid1.compartment.oc1..6zvhnus3q
-
-Deploying ClusterNetwork-ocihpc-test-7355 [0min 0sec]
-Deploying ClusterNetwork-ocihpc-test-7355 [0min 17sec]
-Deploying ClusterNetwork-ocihpc-test-7355 [0min 35sec]
-...
-```
+  Deploying ClusterNetwork-ocihpc-test-7355 [0min 0sec]
+  Deploying ClusterNetwork-ocihpc-test-7355 [0min 17sec]
+  Deploying ClusterNetwork-ocihpc-test-7355 [0min 35sec]
+  ...
+  ```
 
 
 ### **STEP 9: Connect**
@@ -256,9 +256,9 @@ Deploying ClusterNetwork-ocihpc-test-7355 [0min 35sec]
 When deployment is completed, you will see the the bastion/headnode IP that you can connect to:
 
 ```
-Successfully deployed ClusterNetwork-ocihpc-test-7355
+$ Successfully deployed ClusterNetwork-ocihpc-test-7355
 
-You can connect to your head node using the command: ssh opc@$123.221.10.8 -i <location of the private key you used>
+$ You can connect to your head node using the command: ssh opc@$123.221.10.8 -i <location of the private key you used>
 ```
 
 You can also get the connection details by running `ocihpc get ip` command.
@@ -277,7 +277,7 @@ In addition, you can use cli commands to easily manage and keep tracks of your r
 - To move a Stack and it's associated Jobs into a different compartment: `oci resource-manager stack change-compartment -c [OCID OF NEW COMPARTMENT] --stack-id [OCID OF THE STACK]`
 
 
-### **STEP 9: Delete**
+### **STEP 10: Delete**
 When you are done with your deployment, you can delete it by changing to the stack folder and running `ocihpc delete --stack <stack name>`.
 
 Example:

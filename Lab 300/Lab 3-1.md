@@ -28,11 +28,11 @@ Before you begin using this lab, make sure to have access to the following:
 
 # Basics of HPC (optional): 
 
-### - What is OpenFoam:
+###  What is OpenFoam:
    Computational Fluid Dynamics (CFD) is the simulation of fluid motion and heat transfer using numerical analysis. CFD software, such as OpenFOAM, can serve as a powerful tool for many engineering industries to improve designs, visualize impact, and detect inefficiencies in a system. However, the computational power required to process a simulation can be very intensive. Super-computers and HPC clusters are often used to execute large and complex models within a reasonable timeframe. 
    In this lab, you will compute and render the aerodynamic model of a motorcycle using an open-source CFD software, OpenFOAM, within an Oracle HPC cluster 
 
-### - Infrastrucutre terminology:
+###  Infrastrucutre terminology:
    - Worker node: HPC compute instances providing the processing power to execute the workload of computational simulations or other engineering workload. In this Demo compute shape BM.HPC2.36 nodes are the worker nodes.
    - Head node: Compute instance from where all the computational jobs can be scheduled and submitted to be run on Worker nodes. Many times Head node and Bastion node can be the same machine. For this demo we are provisioning Bastion node.
    - GPU node: A specialized compute instance having GPU processors so as to render the output of computational workload. This demo is not provisioning a GPU machine.

@@ -10,9 +10,9 @@ These hands-on lab guides provide step-by-step directions to setting up and usin
 
 Lab 1 deals with setting up the High Performance Compute Instance in the Oracle Cloud Infrastructure.
 
-Labs 2 are geared towards Managing your High Performance Compute Instance using OCI CLI tools.
+Lab 2 are geared towards Managing your High Performance Compute Instance using OCI CLI tools.
 
-Labs 3 designed to assist in the assessment of the OpenFOAM CFD Software in Oracle Cloud Infrastructure.
+Lab 3 design to assist in the assessment of the OpenFOAM CFD Software in Oracle Cloud Infrastructure.
 
 
 
@@ -51,7 +51,7 @@ while protecting hardware and network, compute nodes are virtualized using BM.HP
 **Key Objectives**:
 - Create 2 HPC cluster compute nodes 
 - Layout a secure cluster network for the HPC nodes and bastion nodes
-- Create NFS share between custer nodes
+- Create NFS share between cluster nodes
 
 
 

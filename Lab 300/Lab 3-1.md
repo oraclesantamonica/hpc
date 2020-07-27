@@ -27,8 +27,6 @@ Before you begin using this lab, make sure to have access to the following:
 
 
 # Basics of HPC (optional): 
- ### - What is HPC: 
-   High performance computing or HPC refers to a field of computation that deals with running workloads which generally the nornal desktop based compute processors are unable to perform like complex mathmetical and simulation models. These workload include running simulations so as to test how a object will respond in real world and how changing an external influence or a parameter change will impact the working and efficency of the object. So these workload genarates vast amount of data and that data needs to be parallely processed by multiple HPC compute instances over a very high throughput and low latency connected network like RoCE which is based on RDMA network architecture. 
 
 ### - What is OpenFoam:
    Computational Fluid Dynamics (CFD) is the simulation of fluid motion and heat transfer using numerical analysis. CFD software, such as OpenFOAM, can serve as a powerful tool for many engineering industries to improve designs, visualize impact, and detect inefficiencies in a system. However, the computational power required to process a simulation can be very intensive. Super-computers and HPC clusters are often used to execute large and complex models within a reasonable timeframe. 
@@ -40,6 +38,9 @@ Before you begin using this lab, make sure to have access to the following:
    - GPU node: A specialized compute instance having GPU processors so as to render the output of computational workload. This demo is not provisioning a GPU machine.
    - Bastion node: A compute instance with Public IP, acts as entry point to connect to  worker nodes which are generally in Private network. 
    - RoCE network: RDMA over Converged Ethernet (RoCE) is a network protocol that allows remote direct memory access (RDMA) over an Ethernet network.
+
+
+
 
 # Steps:
 ### **STEP 1: Launch marketplace image**

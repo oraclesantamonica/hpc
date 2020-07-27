@@ -323,7 +323,7 @@ cd /mnt/gluster-share/ParaView-4.4.0-Qt4-Linux-64bit/bin/
 <p>&nbsp;</p>
 
 
-#### This completes the demo for running OpenFoam application on HPC compute instances.
+#### All Done! This completes the demo for running OpenFoam application on HPC compute instances.
 
 <p>&nbsp;</p>
 

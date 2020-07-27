@@ -7,10 +7,10 @@ The HPC Command Line Interface (CLI) enables you to use a single command to depl
 
 Benefits of using HPC CLI include:
 
-1. Fast Launch a complete compute cluster with RDMA over converged Ethernet (RoCE) v2 quickly through a single command.
-2. Easy to Use No knowledge of Terraform or Oracle Cloud Infrastructure Resource Manager required to launch a basic cluster network.
-3. Supports Message Passing Interface (MPI) Deployment includes a complete set of software packages for running parallel processing with RDMA, including Mellanox OFED with Open MPI, Intel MPI, and Platform MPI.
-4. Customizable You can execute your own terraform scripts or add to the existing scripts provided with the tool to install your own applications.
+- Fast Launch a complete compute cluster with RDMA over converged Ethernet (RoCE) v2 quickly through a single command.
+- Easy to Use No knowledge of Terraform or Oracle Cloud Infrastructure Resource Manager required to launch a basic cluster network.
+- Supports Message Passing Interface (MPI) Deployment includes a complete set of software packages for running parallel processing with RDMA, including Mellanox OFED with Open MPI, Intel MPI, and Platform MPI.
+- Customizable You can execute your own terraform scripts or add to the existing scripts provided with the tool to install your own applications.
 
 ## Objectives
 

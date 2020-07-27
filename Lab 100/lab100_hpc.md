@@ -60,8 +60,8 @@ Once you've created the Stack it will redirect you to a page where you can view 
  - **Outputs**
  - **View State** of the job
 
-<img src="img/stack_detail_provisioning.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
+ <img src="img/stack_detail_provisioning.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
 
-To navigate to this page where you can view all your Stacks in your current compartment click on the Hamburger Menu (≡) on the top left and under **Solutions and Platform** hover over **Resource Manager** > **Stacks**.
+ To navigate to this page where you can view all your Stacks in your current compartment click on the Hamburger Menu (≡) on the top left and under **Solutions and Platform** hover over **Resource Manager** > **Stacks**.
 
-<img src="img/nav_resource_manager.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
+ <img src="img/nav_resource_manager.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>

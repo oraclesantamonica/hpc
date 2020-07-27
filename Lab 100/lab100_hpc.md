@@ -18,7 +18,7 @@ As a Developer or Data Engineer,
 
 ## Steps
 
-### Navigate to the OCI Marketplace
+### **STEP 1: Navigate to the OCI Marketplace**
 1. Click the Hamburger Menu (≡) on the top left corner.
  <img src="img/click_hamburger.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
 2. Scroll down and click Marketplace.
@@ -29,7 +29,8 @@ As a Developer or Data Engineer,
 4. Review the and accept the *Oracle Standard Terms and Restrictions* and
 click **Launch Stack**.
 <img src="img/launch_stack.png" alt="marketplace" width="700" style="vertical-align:middle;margin:0px 50px"/>
-### Configure the HPC Stack
+
+### **STEP 2: Configure the HPC Stack**
 After launching the stack you'll be redirected to the Create Stack Wizard where you'll fill in the Stack information.
 
 1. In **Stack Information** give the Stack a name and *(optionally)* specify to deploy in a compartment that you are currently not in.
@@ -50,7 +51,7 @@ After launching the stack you'll be redirected to the Create Stack Wizard where 
 
 **Note:** It will take approximately 15 minutes to provision the Stack.
 
-### View the running Stack
+### **STEP 3: View the running Stack**
 
 Once you've created the Stack it will redirect you to a page where you can view the stack job running. It should look something like below. Here you can view:
  - **Logs**

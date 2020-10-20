@@ -96,7 +96,6 @@ Note: For this lab we will be utilizing only the basic VM.Standard2.1 shape, but
 
 - On the top left menu, select Compute and create instance.
         ![](./compute.png " ")
-        ![](./compute_bm.png " ")
         ![](./compute_vm.png " ")
 
     - Name: i.e. hpc_head

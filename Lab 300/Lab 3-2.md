@@ -290,8 +290,8 @@ Install from sources, modify the path to the tarballs in the next commands. This
  mv OpenFOAM-7-version-7 OpenFOAM-7
  mv ThirdParty-7-version-7 ThirdParty-7
  export PATH=/usr/lib64/openmpi/bin/:/usr/lib64/qt5/bin/:$PATH
- echo export PATH=/usr/lib64/openmpi/bin/:\$PATH | sudo tee -a ~/.bashrc
- echo export $ LD_LIBRARY_PATH=/usr/lib64/openmpi/lib/:\$LD_LIBRARY_PATH | sudo tee -a ~/.bashrc
+ echo export PATH=/usr/lib64/openmpi/bin/:$PATH | sudo tee -a ~/.bashrc
+ echo export LD_LIBRARY_PATH=/usr/lib64/openmpi/lib/:$LD_LIBRARY_PATH | sudo tee -a ~/.bashrc
  echo source /mnt/share/OpenFOAM-7/etc/bashrc | sudo tee -a ~/.bashrc
  sudo ln -s /usr/lib64/libboost_thread-mt.so /usr/lib64/libboost_thread.so
  source ~/.bashrc
@@ -304,8 +304,8 @@ Install from sources, modify the path to the tarballs in the next commands. This
  sudo yum -y install openmpi openmpi-devel
  cd /mnt/share
  export PATH=/usr/lib64/openmpi/bin/:/usr/lib64/qt5/bin/:$PATH
- echo export PATH=/usr/lib64/openmpi/bin/:\$PATH | $ sudo tee -a ~/.bashrc
- echo export $LD_LIBRARY_PATH=/usr/lib64/openmpi/lib/:\$LD_LIBRARY_PATH | sudo tee -a ~/.bashrc
+ echo export PATH=/usr/lib64/openmpi/bin/:$PATH | $ sudo tee -a ~/.bashrc
+ echo export $LD_LIBRARY_PATH=/usr/lib64/openmpi/lib/:$LD_LIBRARY_PATH | sudo tee -a ~/.bashrc
  echo source /mnt/share/OpenFOAM-7/etc/bashrc | $ sudo tee -a ~/.bashrc
  sudo ln -s /usr/lib64/libboost_thread-mt.so /usr/lib64/libboost_thread.so
  source ~/.bashrc
@@ -320,7 +320,7 @@ On Headnode, run the following commands that will be needed to render the output
 ```
  $ sudo yum install -y mesa-libGLU
  $ cd /mnt/share
- $ curl -d submit="Download" -d version="v4.4" -d type="binary" -d os="Linux" -d downloadFile="ParaView-4.4.0-Qt4-Linux-64bit.tar.gz" $ https://www.paraview.org/paraview-downloads/download.php > file.tar.gz
+ $ curl -d submit="Download" -d version="v4.4" -d type="binary" -d os="Linux" -d downloadFile="ParaView-4.4.0-Qt4-Linux-64bit.tar.gz" https://www.paraview.org/paraview-downloads/download.php > file.tar.gz
  $ tar -xf file.tar.gz
 ```
 
